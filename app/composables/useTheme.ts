@@ -69,8 +69,9 @@ export function useTheme() {
     } catch {
       /* ignore */
     }
-    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches
-    apply(stored ?? (prefersLight ? 'light' : 'dark'))
+    // dark is the site's default regardless of OS preference — only an
+    // explicit toggle (saved above) should ever switch it to light
+    apply(stored ?? 'dark')
   }
 
   return { theme, toggle, init }

@@ -203,7 +203,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       status: 'en construcción',
       heading: 'Próximamente',
       body: 'Estoy desarrollando un proyecto full-stack de gestión de tareas y gastos personales para mostrar aquí mi trabajo de punta a punta.',
-      plannedHeading: 'Lo que incluirá',
+      plannedHeading: 'Lo que incluirá este proyecto',
       features: [
         'Gestión de tareas y actividades',
         'Registro de gastos por categoría',
@@ -342,7 +342,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       status: 'under construction',
       heading: 'Coming soon',
       body: 'I am building a full-stack personal task & expense management project to showcase my end-to-end work here.',
-      plannedHeading: 'What it will include',
+      plannedHeading: 'What this project will include',
       features: [
         'Task & activity management',
         'Expense tracking by category',
