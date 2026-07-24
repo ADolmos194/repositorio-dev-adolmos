@@ -25,7 +25,6 @@ export function useTheme() {
     const reduce =
       import.meta.client && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    // @ts-expect-error - startViewTransition is not in older lib types
     const supported = import.meta.client && typeof document.startViewTransition === 'function'
 
     if (!supported || reduce) {
@@ -41,7 +40,6 @@ export function useTheme() {
       Math.max(y, window.innerHeight - y),
     )
 
-    // @ts-expect-error - experimental API
     const transition = document.startViewTransition(() => apply(next))
 
     transition.ready.then(() => {
