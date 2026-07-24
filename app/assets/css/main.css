@@ -493,7 +493,16 @@ section { padding: 12px 0 8px; scroll-margin-top: 70px; }
 
 @media (max-width: 480px) {
   .stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stat { padding: 12px 8px; }
   .stat b { font-size: 1.5rem; }
+  /* re-assert after the generic .stat b bump above — same specificity,
+     so source order decides and this must come last to keep the
+     learning box's wrapped labels from ballooning to 1.5rem */
+  .stat--learning b { font-size: .78rem; line-height: 1.35; }
+  /* stack's 3rd box holds wrapping text, not a number — give it the
+     full row so it doesn't force the other two into a tall stretch */
+  #stack .stats { grid-template-columns: repeat(2, 1fr); }
+  #stack .stat--learning { grid-column: 1 / -1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
