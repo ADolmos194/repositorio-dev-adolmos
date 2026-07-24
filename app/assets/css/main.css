@@ -372,12 +372,14 @@ section { padding: 12px 0 8px; scroll-margin-top: 70px; }
 .tl-item:nth-child(even) .tl-date { grid-column: 1; text-align: right; padding-right: 6px; }
 
 @media (max-width: 860px) {
-  .timeline::before { left: 8px; transform: none; }
-  .tl-item { grid-template-columns: 1fr; position: relative; padding-left: 32px; }
+  .timeline::before { left: 10px; transform: none; }
+  /* node sits in its own narrow column right next to the date, card wraps below —
+     real grid columns instead of absolute-positioning math, so the gap is exact */
+  .tl-item { grid-template-columns: 20px 1fr; column-gap: 8px; row-gap: 4px; align-items: start; }
   .tl-node, .tl-card, .tl-date { grid-row: auto; }
-  .tl-node { position: absolute; left: 8px; top: 6px; transform: translateX(-50%) rotate(45deg); justify-self: start; }
-  .tl-item:nth-child(odd) .tl-card, .tl-item:nth-child(even) .tl-card { grid-column: 1; }
-  .tl-item:nth-child(odd) .tl-date, .tl-item:nth-child(even) .tl-date { grid-column: 1; text-align: left; padding: 0 0 8px; order: -1; }
+  .tl-node { grid-column: 1; grid-row: 1; justify-self: center; align-self: center; position: static; }
+  .tl-item:nth-child(odd) .tl-card, .tl-item:nth-child(even) .tl-card { grid-column: 2; grid-row: 2; }
+  .tl-item:nth-child(odd) .tl-date, .tl-item:nth-child(even) .tl-date { grid-column: 2; grid-row: 1; text-align: left; padding: 0; }
 }
 
 /* ── section status chip ─────────────────────── */
@@ -562,7 +564,7 @@ section { padding: 12px 0 8px; scroll-margin-top: 70px; }
 /* ── ABOUT (system identity) ──────────────────── */
 .about-grid { display: grid; grid-template-columns: 1fr; gap: 22px; align-items: center; }
 @media (min-width: 960px) { .about-grid { grid-template-columns: auto 1fr; } }
-.idcard { position: relative; width: 100%; max-width: 250px; justify-self: start; border: 1px solid var(--line); padding: 14px; background: color-mix(in srgb, var(--surface-2) 55%, transparent); box-shadow: var(--shadow-sm); }
+.idcard { position: relative; width: 100%; max-width: 250px; justify-self: center; border: 1px solid var(--line); padding: 14px; background: color-mix(in srgb, var(--surface-2) 55%, transparent); box-shadow: var(--shadow-sm); }
 .idcard__head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
 .idcard__title { color: var(--accent); font-size: 12px; letter-spacing: 1px; font-weight: 700; }
 .idcard__avatar { position: relative; aspect-ratio: 1 / 1; border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; margin-bottom: 12px;
