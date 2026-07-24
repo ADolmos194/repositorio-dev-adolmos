@@ -1,0 +1,77 @@
+export type Theme = 'dark' | 'light'
+
+/**
+ * Dark / light theme with a persisted preference and an expanding-wave
+ * (ripple) reveal on toggle, using the View Transitions API.
+ */
+export function useTheme() {
+  const theme = useState<Theme>('theme', () => 'dark')
+
+  function apply(next: Theme) {
+    theme.value = next
+    if (import.meta.client) {
+      document.documentElement.setAttribute('data-theme', next)
+      try {
+        localStorage.setItem('theme', next)
+      } catch {
+        /* storage may be unavailable */
+      }
+    }
+  }
+
+  function toggle(event?: MouseEvent) {
+    const next: Theme = theme.value === 'dark' ? 'light' : 'dark'
+
+    const reduce =
+      import.meta.client && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    // @ts-expect-error - startViewTransition is not in older lib types
+    const supported = import.meta.client && typeof document.startViewTransition === 'function'
+
+    if (!supported || reduce) {
+      apply(next)
+      return
+    }
+
+    // origin of the wave = click point (fallback to top-right)
+    const x = event?.clientX ?? window.innerWidth - 40
+    const y = event?.clientY ?? 40
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y),
+    )
+
+    // @ts-expect-error - experimental API
+    const transition = document.startViewTransition(() => apply(next))
+
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 520,
+          easing: 'ease-in-out',
+          pseudoElement: '::view-transition-new(root)',
+        },
+      )
+    })
+  }
+
+  function init() {
+    if (!import.meta.client) return
+    let stored: Theme | null = null
+    try {
+      stored = localStorage.getItem('theme') as Theme | null
+    } catch {
+      /* ignore */
+    }
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches
+    apply(stored ?? (prefersLight ? 'light' : 'dark'))
+  }
+
+  return { theme, toggle, init }
+}
