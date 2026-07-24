@@ -61,15 +61,15 @@ const facts = computed(() => [
         </div>
 
         <div class="cta-row">
-          <NuxtLink to="/experience" class="go-btn">
+          <NuxtLink to="/experience" class="go-btn go-btn--nav">
             <span class="go-btn__k">~$ cd</span>
             <span class="go-btn__v">./{{ c.nav.experience }}</span>
-            <Icon class="go-btn__ico" name="lucide:arrow-right" />
+            <Icon class="go-btn__ico" name="lucide:arrow-left" />
           </NuxtLink>
-          <NuxtLink to="/contact" class="go-btn">
+          <NuxtLink to="/contact" class="go-btn go-btn--nav">
             <span class="go-btn__k">~$ cd</span>
             <span class="go-btn__v">./{{ c.nav.contact }}</span>
-            <Icon class="go-btn__ico" name="lucide:arrow-right" />
+            <Icon class="go-btn__ico" name="lucide:arrow-left" />
           </NuxtLink>
         </div>
       </div>
