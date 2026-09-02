@@ -36,6 +36,7 @@ export interface LocaleContent {
     intro: string
     items: { icon: string; title: string; body: string; tags: string[] }[]
     ctaLabel: string
+    ctaHint: string
   }
   stack: { title: string; groups: SkillGroup[]; stats: { total: string; categories: string; learning: string } }
   experience: {
@@ -162,6 +163,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       ],
       ctaLabel: 'Hablemos de tu proyecto',
+      ctaHint: 'Hacé clic para ir directo a contacto',
     },
     stack: {
       title: 'stack',
@@ -321,6 +323,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         },
       ],
       ctaLabel: 'Let\'s talk about your project',
+      ctaHint: 'Click to jump straight to the contact section',
     },
     stack: {
       title: 'stack',

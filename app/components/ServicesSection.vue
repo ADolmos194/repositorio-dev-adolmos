@@ -20,11 +20,14 @@ const { c } = useLocale()
       </div>
     </div>
 
-    <a href="#contact" class="go-btn go-btn--dl svc-cta">
-      <span class="go-btn__k">~$ cd</span>
-      <span class="go-btn__v">{{ c.services.ctaLabel }}</span>
-      <Icon class="go-btn__ico" name="lucide:arrow-right" />
-    </a>
+    <div class="svc-cta-wrap">
+      <a href="#contact" class="go-btn go-btn--dl svc-cta">
+        <span class="go-btn__k">~$ cd</span>
+        <span class="go-btn__v">{{ c.services.ctaLabel }}</span>
+        <Icon class="go-btn__ico" name="lucide:arrow-right" />
+      </a>
+      <p class="svc-cta-hint">{{ c.services.ctaHint }}</p>
+    </div>
   </section>
 </template>
 
@@ -43,10 +46,12 @@ const { c } = useLocale()
 .svc-card__ico { font-size: 20px; color: var(--accent); flex: none; }
 .svc-card__body { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--text-dim); font-family: var(--sans); }
 
-.svc-cta { justify-content: center; margin-top: 22px; }
+.svc-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 22px; }
+.svc-cta { justify-content: center; }
 /* the one other spot the gradient shows up — only on interaction, never at rest */
 .svc-cta:hover .go-btn__v {
   background: var(--gradient-accent);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
+.svc-cta-hint { margin: 0; font-size: 12px; color: var(--text-mute); font-family: var(--sans); }
 </style>
