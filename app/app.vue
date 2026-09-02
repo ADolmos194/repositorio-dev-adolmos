@@ -18,7 +18,5 @@ onMounted(init)
         <SiteFooter />
       </main>
     </div>
-
-    <CommandPalette />
   </div>
 </template>

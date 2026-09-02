@@ -11,7 +11,6 @@ const companies = computed(
 <template>
   <section id="experience" data-accent="green">
     <SectionHead n="04" :title="c.experience.title" status="LOG: VERIFIED" />
-    <p class="cmd"><span class="c">~$</span> {{ c.experience.cmd }}</p>
 
     <div class="stats">
       <div class="stat"><b>{{ years }}+</b><span>{{ c.experience.stats.years }}</span></div>

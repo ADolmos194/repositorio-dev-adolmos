@@ -41,13 +41,9 @@ const facts = computed(() => [
 </script>
 
 <template>
-  <header class="hero" data-accent="green">
+  <header id="home" class="hero" data-accent="green">
     <div class="home">
       <div>
-        <p class="cmd">
-          <span class="c">~$</span> ./init_identity.sh
-        </p>
-
         <h1><span class="glitch" data-t="Aylton Martinez">Aylton Martinez</span></h1>
 
         <p class="role">
@@ -61,16 +57,16 @@ const facts = computed(() => [
         </div>
 
         <div class="cta-row">
-          <NuxtLink to="/experience" class="go-btn go-btn--nav">
+          <a href="#experience" class="go-btn go-btn--nav">
             <span class="go-btn__k">~$ cd</span>
             <span class="go-btn__v">./{{ c.nav.experience }}</span>
             <Icon class="go-btn__ico" name="lucide:arrow-left" />
-          </NuxtLink>
-          <NuxtLink to="/contact" class="go-btn go-btn--nav">
+          </a>
+          <a href="#contact" class="go-btn go-btn--nav">
             <span class="go-btn__k">~$ cd</span>
             <span class="go-btn__v">./{{ c.nav.contact }}</span>
             <Icon class="go-btn__ico" name="lucide:arrow-left" />
-          </NuxtLink>
+          </a>
         </div>
       </div>
 

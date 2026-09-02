@@ -5,7 +5,6 @@ const { c } = useLocale()
 <template>
   <section id="about" class="about" data-accent="blue">
     <SectionHead n="01" :title="c.about.title" status="IDENTITY: OK" />
-    <p class="cmd"><span class="c">~$</span> {{ c.about.cmd }}</p>
 
     <div class="about-grid">
       <aside class="idcard">

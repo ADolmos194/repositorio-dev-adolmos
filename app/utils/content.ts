@@ -30,17 +30,15 @@ export interface LocaleContent {
     focus: string
     availability: string
   }
-  about: { cmd: string; title: string; paragraphs: string[]; highlights: string[]; downloadCv: string }
+  about: { title: string; paragraphs: string[]; highlights: string[]; downloadCv: string }
   services: {
-    cmd: string
     title: string
     intro: string
     items: { icon: string; title: string; body: string; tags: string[] }[]
     ctaLabel: string
   }
-  stack: { cmd: string; title: string; groups: SkillGroup[]; stats: { total: string; categories: string; learning: string } }
+  stack: { title: string; groups: SkillGroup[]; stats: { total: string; categories: string; learning: string } }
   experience: {
-    cmd: string
     title: string
     live: string
     now: string
@@ -48,7 +46,6 @@ export interface LocaleContent {
     stats: { years: string; roles: string; companies: string }
   }
   projects: {
-    cmd: string
     title: string
     status: string
     heading: string
@@ -60,7 +57,6 @@ export interface LocaleContent {
     repo: string
   }
   contact: {
-    cmd: string
     title: string
     availability: string
     cta: string
@@ -68,16 +64,6 @@ export interface LocaleContent {
     process: { heading: string; steps: { title: string; detail: string }[] }
   }
   footer: { built: string; status: string }
-  palette: {
-    placeholder: string
-    navGroup: string
-    actionsGroup: string
-    themeToLight: string
-    themeToDark: string
-    langToEs: string
-    langToEn: string
-    empty: string
-  }
 }
 
 /* Skills are stack-agnostic to language; defined once and reused. */
@@ -132,7 +118,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       availability: 'Disponible: freelance y full-time',
     },
     about: {
-      cmd: 'cat about.md',
       title: 'sobre_mí',
       paragraphs: [
         'Desarrollador <span class="hl">Full Stack</span> con base en Trujillo. Me hago cargo de tu proyecto completo: del modelo de datos en <span class="hlb">PostgreSQL</span> y las APIs en <span class="hlb">Django REST</span>, hasta interfaces en <span class="hlb">Vue 3 / Nuxt / React</span> y apps en <span class="hlb">Flutter</span>.',
@@ -148,7 +133,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       downloadCv: 'cv-aylton-martinez.pdf',
     },
     services: {
-      cmd: 'cat services.json | jq',
       title: 'servicios',
       intro: 'Cómo puedo ayudarte, ya sea por un proyecto puntual o como parte de tu equipo.',
       items: [
@@ -180,7 +164,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       ctaLabel: 'Hablemos de tu proyecto',
     },
     stack: {
-      cmd: 'ls -la ./skills',
       title: 'stack',
       groups: [
         { title: 'lenguajes', tags: skillTags.langs },
@@ -193,7 +176,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       stats: { total: 'tecnologías', categories: 'categorías', learning: 'en aprendizaje' },
     },
     experience: {
-      cmd: 'git log --oneline --career',
       title: 'experiencia',
       live: 'en curso',
       now: 'Actualidad',
@@ -243,7 +225,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       stats: { years: 'años en TI', roles: 'roles', companies: 'empresas' },
     },
     projects: {
-      cmd: 'ls ./projects',
       title: 'proyectos',
       status: 'proyecto propio · en desarrollo activo',
       heading: 'Gestión de Gastos e Ingresos',
@@ -261,7 +242,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       repo: 'https://github.com/ADolmos194/gestion-gastos-ingresos',
     },
     contact: {
-      cmd: './connect.sh',
       title: 'contacto',
       availability: 'Disponible para nuevos proyectos y oportunidades',
       cta: 'Escríbeme',
@@ -277,16 +257,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       },
     },
     footer: { built: 'construido con', status: 'sistema operativo' },
-    palette: {
-      placeholder: 'Buscar sección o comando…',
-      navGroup: 'ir_a',
-      actionsGroup: 'acciones',
-      themeToLight: 'Cambiar a modo claro',
-      themeToDark: 'Cambiar a modo oscuro',
-      langToEs: 'Cambiar idioma a Español',
-      langToEn: 'Cambiar idioma a English',
-      empty: 'Sin resultados',
-    },
   },
 
   en: {
@@ -307,7 +277,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       availability: 'Available: freelance & full-time',
     },
     about: {
-      cmd: 'cat about.md',
       title: 'about_me',
       paragraphs: [
         '<span class="hl">Full Stack</span> developer based in Trujillo, Peru. I take full ownership of your project: from the data model in <span class="hlb">PostgreSQL</span> and the APIs in <span class="hlb">Django REST</span>, to interfaces in <span class="hlb">Vue 3 / Nuxt / React</span> and apps in <span class="hlb">Flutter</span>.',
@@ -323,7 +292,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       downloadCv: 'cv-aylton-martinez.pdf',
     },
     services: {
-      cmd: 'cat services.json | jq',
       title: 'services',
       intro: 'How I can help, whether it\'s a one-off project or as part of your team.',
       items: [
@@ -355,7 +323,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       ctaLabel: 'Let\'s talk about your project',
     },
     stack: {
-      cmd: 'ls -la ./skills',
       title: 'stack',
       groups: [
         { title: 'languages', tags: skillTags.langs },
@@ -368,7 +335,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       stats: { total: 'technologies', categories: 'categories', learning: 'learning' },
     },
     experience: {
-      cmd: 'git log --oneline --career',
       title: 'experience',
       live: 'ongoing',
       now: 'Present',
@@ -418,7 +384,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       stats: { years: 'years in IT', roles: 'roles', companies: 'companies' },
     },
     projects: {
-      cmd: 'ls ./projects',
       title: 'projects',
       status: 'personal project · active development',
       heading: 'Expense & Income Management',
@@ -436,7 +401,6 @@ export const siteContent: Record<Locale, LocaleContent> = {
       repo: 'https://github.com/ADolmos194/gestion-gastos-ingresos',
     },
     contact: {
-      cmd: './connect.sh',
       title: 'contact',
       availability: 'Available for new projects and opportunities',
       cta: 'Write to me',
@@ -452,15 +416,5 @@ export const siteContent: Record<Locale, LocaleContent> = {
       },
     },
     footer: { built: 'built with', status: 'system operational' },
-    palette: {
-      placeholder: 'Search a section or command…',
-      navGroup: 'go_to',
-      actionsGroup: 'actions',
-      themeToLight: 'Switch to light mode',
-      themeToDark: 'Switch to dark mode',
-      langToEs: 'Switch language to Español',
-      langToEn: 'Switch language to English',
-      empty: 'No results',
-    },
   },
 }

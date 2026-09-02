@@ -5,7 +5,6 @@ const { c } = useLocale()
 <template>
   <section id="services" data-accent="green">
     <SectionHead n="02" :title="c.services.title" status="SERVICES: ONLINE" />
-    <p class="cmd"><span class="c">~$</span> {{ c.services.cmd }}</p>
     <p class="intro">{{ c.services.intro }}</p>
 
     <div class="services-grid">
@@ -21,11 +20,11 @@ const { c } = useLocale()
       </div>
     </div>
 
-    <NuxtLink to="/contact" class="go-btn go-btn--dl svc-cta">
+    <a href="#contact" class="go-btn go-btn--dl svc-cta">
       <span class="go-btn__k">~$ cd</span>
       <span class="go-btn__v">{{ c.services.ctaLabel }}</span>
       <Icon class="go-btn__ico" name="lucide:arrow-right" />
-    </NuxtLink>
+    </a>
   </section>
 </template>
 

@@ -1,31 +1,66 @@
 <script setup lang="ts">
 const { locale, c, set } = useLocale()
 const { theme, toggle } = useTheme()
-const { open: paletteOpen } = useCommandPalette()
 
 const open = ref(false)
-const route = useRoute()
-watch(() => route.path, () => { open.value = false })
 
 const links = computed(() => [
-  { to: '/about', label: c.value.nav.about },
-  { to: '/services', label: c.value.nav.services },
-  { to: '/stack', label: c.value.nav.stack },
-  { to: '/experience', label: c.value.nav.experience },
-  { to: '/projects', label: c.value.nav.projects },
-  { to: '/contact', label: c.value.nav.contact },
+  { id: 'home', label: c.value.nav.home },
+  { id: 'about', label: c.value.nav.about },
+  { id: 'services', label: c.value.nav.services },
+  { id: 'stack', label: c.value.nav.stack },
+  { id: 'experience', label: c.value.nav.experience },
+  { id: 'projects', label: c.value.nav.projects },
+  { id: 'contact', label: c.value.nav.contact },
 ])
+
+const sectionIds = ['home', 'about', 'services', 'stack', 'experience', 'projects', 'contact']
+const activeId = ref('home')
+let root: HTMLElement | null = null
+
+/* scroll-spy runs against .term__body (the scroll container) rather than the
+   viewport, since the page scrolls inside the terminal chrome, not the window.
+   Plain scrollTop math instead of IntersectionObserver: the observer version
+   never marked the last section active, because the page can't scroll far
+   enough for "contact" to cross the activation line — it hits the bottom of
+   the scroll range first, so the second-to-last section stayed lit forever. */
+function updateActive() {
+  if (!root) return
+  const activationLine = root.getBoundingClientRect().top + root.clientHeight * 0.25
+
+  let current = sectionIds[0]
+  for (const id of sectionIds) {
+    const el = document.getElementById(id)
+    if (el && el.getBoundingClientRect().top <= activationLine) current = id
+  }
+  // pinned to the floor of the scroll container → force the last section,
+  // regardless of where the activation line landed
+  if (root.scrollTop + root.clientHeight >= root.scrollHeight - 16) {
+    current = sectionIds[sectionIds.length - 1]
+  }
+  activeId.value = current
+}
+
+onMounted(() => {
+  root = document.querySelector('.term__body')
+  root?.addEventListener('scroll', updateActive, { passive: true })
+  // 'scroll' fires throughout a smooth-scroll animation but the tick that
+  // lands exactly on the resting position isn't guaranteed — 'scrollend'
+  // fires once, precisely when it actually stops, so the final state is
+  // always correct even after clicking a nav link.
+  root?.addEventListener('scrollend', updateActive, { passive: true })
+  updateActive()
+})
+onBeforeUnmount(() => {
+  root?.removeEventListener('scroll', updateActive)
+  root?.removeEventListener('scrollend', updateActive)
+})
 </script>
 
 <template>
   <div class="term__bar">
     <div class="dots"><i class="r" /><i class="y" /><i class="g" /></div>
     <span class="term__path"><b>aylton</b>@portfolio: ~/dev</span>
-
-    <button type="button" class="cmdk-trigger" :aria-label="c.palette.placeholder" @click="paletteOpen = true">
-      <Icon name="lucide:search" />
-      <kbd>⌘K</kbd>
-    </button>
 
     <button
       class="term__burger"
@@ -37,8 +72,13 @@ const links = computed(() => [
     </button>
 
     <nav class="term__nav" :class="{ open }" aria-label="Secciones">
-      <NuxtLink to="/">{{ c.nav.home }}</NuxtLink>
-      <NuxtLink v-for="l in links" :key="l.to" :to="l.to">{{ l.label }}</NuxtLink>
+      <a
+        v-for="l in links"
+        :key="l.id"
+        :href="`#${l.id}`"
+        :class="{ active: activeId === l.id }"
+        @click="open = false"
+      >{{ l.label }}</a>
 
       <span class="seg" role="group" aria-label="Idioma / Language">
         <button type="button" :class="{ active: locale === 'es' }" :aria-pressed="locale === 'es'" @click="set('es')">ES</button>
@@ -57,21 +97,6 @@ const links = computed(() => [
 </template>
 
 <style scoped>
-.cmdk-trigger {
-  display: inline-flex; align-items: center; gap: 7px;
-  margin-left: 14px;
-  background: transparent; border: 1px solid var(--line); border-radius: 6px;
-  color: var(--text-mute); cursor: pointer;
-  padding: 4px 8px; font-size: 12px;
-  transition: color .16s, border-color .16s;
-}
-.cmdk-trigger:hover, .cmdk-trigger:focus-visible { color: var(--green); border-color: var(--green-dim); outline: none; }
-.cmdk-trigger kbd {
-  font-family: var(--mono); font-size: 10.5px; color: var(--text-mute);
-  border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px;
-}
-.cmdk-trigger:hover kbd, .cmdk-trigger:focus-visible kbd { color: var(--green); border-color: var(--green-dim); }
-
 .theme-btn {
   margin-left: 6px;
   padding: 4px 10px;

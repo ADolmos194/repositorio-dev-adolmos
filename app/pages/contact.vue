@@ -1,3 +1,0 @@
-<template>
-  <ContactSection />
-</template>

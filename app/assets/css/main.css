@@ -124,7 +124,11 @@ body {
 
 .wrap {
   position: relative; z-index: 1;
-  min-height: 100dvh;
+  /* must stay a definite height, not min-height — .term's max-height:100%
+     below only resolves against a definite parent height. With min-height
+     here, .term had no cap and grew to fit every stacked section, dragging
+     the nav bar off-screen with it instead of staying pinned. */
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,7 +180,7 @@ body {
 }
 .term__nav a::before { content: "./"; color: var(--text-mute); }
 .term__nav a:hover, .term__nav a:focus-visible { color: var(--green); background: color-mix(in srgb, var(--green) 12%, transparent); outline: none; }
-.term__nav a.router-link-exact-active { color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent); }
+.term__nav a.active { color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent); }
 
 /* segmented toggles (language + theme) */
 .seg { margin-left: 6px; display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; font-size: 12px; }
@@ -195,6 +199,7 @@ body {
   min-width: 0;
   overflow-y: auto;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   /* always reserve the scrollbar gutter so section headers keep the same
      width & position whether or not a page scrolls */
   scrollbar-gutter: stable;
@@ -219,22 +224,6 @@ body {
 ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 ::view-transition-old(root) { z-index: 1; }
 ::view-transition-new(root) { z-index: 2147483646; }
-
-/* ── page transition ─────────────────────────── */
-/* current page shrinks away like a held snapshot (mode: out-in in
-   nuxt.config finishes the leave first), then the next one grows back
-   in from the same point — a deliberate, unhurried swap rather than an
-   instant cut or a plain crossfade. Scales from the top so it reads as
-   anchored to the terminal chrome above it. */
-.page-enter-active, .page-leave-active { transform-origin: 50% 0%; }
-.page-leave-active { transition: opacity .32s ease, transform .32s ease; }
-.page-enter-active { transition: opacity .46s cubic-bezier(.16,1,.3,1), transform .46s cubic-bezier(.16,1,.3,1); }
-.page-leave-to { opacity: 0; transform: scale(.96); }
-.page-enter-from { opacity: 0; transform: scale(.97); }
-
-/* ── prompt helper ───────────────────────────── */
-.cmd { color: var(--text-dim); margin: 0 0 6px; font-size: 14px; }
-.cmd .c { color: var(--white); }
 
 /* ── hero ────────────────────────────────────── */
 .hero { padding: 20px 0 12px; }
@@ -281,9 +270,9 @@ body {
 .btn--blue { border-color: var(--blue-dim); color: var(--blue); }
 .btn--blue:hover  { background: color-mix(in srgb, var(--blue) 9%, transparent); border-color: var(--blue); }
 
-/* command-style redirect link — plain "~$ cd ./path →" text, same
-   family as .cmd, not a boxed button. No card, no border, no rule
-   above it — just a command line that changes color on hover. */
+/* command-style redirect link — plain "~$ cd ./path →" text, not a
+   boxed button. No card, no border, no rule above it — just a command
+   line that changes color on hover. */
 .go-btn {
   display: inline-flex; align-items: center; gap: 8px;
   width: fit-content;
@@ -304,7 +293,11 @@ body {
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ── section shell ───────────────────────────── */
-section { padding: 12px 0 8px; scroll-margin-top: 70px; }
+/* generous top/bottom padding + a hairline divider — sections stack in one
+   continuous scroll instead of one-per-page, so each needs real breathing
+   room or the next section's heading peeks in at the bottom of the
+   viewport while you're still reading the current one. */
+section { padding: 96px 0 64px; scroll-margin-top: 70px; border-top: 1px solid var(--line-soft); }
 .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; }
 .sec-head h2 { font-size: 1.5rem; margin: 0; color: var(--white); font-weight: 600; letter-spacing: -.3px; }
 .sec-head h2 .hash { color: var(--accent); }
@@ -554,6 +547,7 @@ section { padding: 12px 0 8px; scroll-margin-top: 70px; }
   /* section header never overflows on narrow screens */
   .sec-head { flex-wrap: wrap; row-gap: 8px; }
   .sec-head .rule { min-width: 20px; }
+  section { padding: 56px 0 36px; }
 
   /* keep the big name inside the viewport */
   .hero h1 { font-size: clamp(1.5rem, 6.6vw, 2.2rem); letter-spacing: -1.5px; }
@@ -633,51 +627,6 @@ section { padding: 12px 0 8px; scroll-margin-top: 70px; }
 .port .ico { color: var(--accent); font-size: 18px; }
 .port__label { color: var(--accent); font-weight: 700; letter-spacing: .5px; font-size: 14px; }
 .port__stat { color: var(--text-mute); font-size: 10.5px; letter-spacing: .5px; }
-
-/* ── command palette (Cmd/Ctrl+K) ────────────── */
-.cmdk-overlay {
-  position: fixed; inset: 0; z-index: 200;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(3px);
-  display: flex; align-items: flex-start; justify-content: center;
-  padding: 12vh 16px 16px;
-}
-.cmdk {
-  width: 100%; max-width: 560px;
-  border: 1px solid var(--line); border-radius: 10px;
-  background: var(--surface);
-  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,0.03);
-  overflow: hidden;
-}
-.cmdk__input-row {
-  display: flex; align-items: center; gap: 10px;
-  padding: 14px 16px; border-bottom: 1px solid var(--line);
-}
-.cmdk__icon { color: var(--text-mute); font-size: 16px; flex: none; }
-.cmdk__input {
-  flex: 1; background: transparent; border: 0; outline: none;
-  color: var(--text); font-family: var(--mono); font-size: 14px;
-}
-.cmdk__input::placeholder { color: var(--text-mute); }
-.cmdk__esc {
-  font-family: var(--mono); font-size: 10.5px; color: var(--text-mute);
-  border: 1px solid var(--line); border-radius: 4px; padding: 2px 6px;
-}
-.cmdk__list { max-height: 340px; overflow-y: auto; padding: 8px; }
-.cmdk__group-label {
-  color: var(--text-mute); font-size: 10.5px; letter-spacing: 1.2px; text-transform: uppercase;
-  padding: 8px 10px 6px;
-}
-.cmdk__item {
-  width: 100%; display: flex; align-items: center; gap: 10px;
-  background: transparent; border: 0; border-radius: 6px; cursor: pointer;
-  color: var(--text); font-family: var(--mono); font-size: 13.5px;
-  padding: 9px 10px; text-align: left;
-}
-.cmdk__item-ico { color: var(--text-mute); font-size: 15px; flex: none; }
-.cmdk__item.active { background: color-mix(in srgb, var(--green) 12%, transparent); }
-.cmdk__item.active .cmdk__item-ico { color: var(--green); }
-.cmdk__empty { color: var(--text-mute); font-size: 13px; padding: 20px 10px; text-align: center; }
 
 /* ── sharp, minimalist corners — no rounded boxes ── */
 .term, .term__bar, .term__nav a, .seg, .btn, .card, .tag, .tl-card, .tl-live,

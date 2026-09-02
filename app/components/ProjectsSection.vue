@@ -5,7 +5,6 @@ const { c } = useLocale()
 <template>
   <section id="projects" data-accent="blue">
     <SectionHead n="05" :title="c.projects.title" status="STATE: ACTIVE_DEV" />
-    <p class="cmd"><span class="c">~$</span> {{ c.projects.cmd }}</p>
 
     <div class="soon">
       <span class="blip" />
