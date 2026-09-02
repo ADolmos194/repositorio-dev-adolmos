@@ -287,6 +287,13 @@ body {
 .go-btn:hover .go-btn__v { color: var(--accent); }
 .go-btn__ico { font-size: 13px; transition: transform .18s; }
 .go-btn:hover .go-btn__ico { transform: translateX(-4px); }
+/* gradient-on-hover text — the one place the brand gradient shows up on
+   interaction, kept to the "jump to a section" buttons (hero + services CTA) */
+.cta-row a:hover .go-btn__v,
+.svc-cta:hover .go-btn__v {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 /* download nudges down instead of sliding right — it's not going to another page */
 .go-btn--dl:hover .go-btn__ico { transform: translateY(3px); }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }

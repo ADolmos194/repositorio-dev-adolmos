@@ -48,10 +48,5 @@ const { c } = useLocale()
 
 .svc-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 22px; }
 .svc-cta { justify-content: center; }
-/* the one other spot the gradient shows up — only on interaction, never at rest */
-.svc-cta:hover .go-btn__v {
-  background: var(--gradient-accent);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
 .svc-cta-hint { margin: 0; font-size: 12px; color: var(--text-mute); font-family: var(--sans); }
 </style>
