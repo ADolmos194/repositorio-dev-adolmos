@@ -10,6 +10,7 @@ const map: Record<string, string> = {
   PostgreSQL: '#6BA4E8',
   WebSockets: '#9AA5B1',
   'Vue 3': '#4FC08D',
+  React: '#61DAFB',
   Nuxt: '#00DC82',
   Vite: '#8B8CF9',
   Tailwind: '#38BDF8',

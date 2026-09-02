@@ -1,75 +1,29 @@
-# Nuxt Minimal Starter
+# Portafolio — Aylton Mesias Martinez
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Sitio personal construido con Nuxt 3, con estética de terminal, soporte bilingüe (ES/EN), modo claro/oscuro y una paleta de comandos (`⌘K`).
 
-## Setup
+## Stack
 
-Make sure to install dependencies:
+Nuxt 3 · Vue 3 · TypeScript · CSS
+
+## Desarrollo
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+pnpm dev       # http://localhost:3000
 ```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+pnpm build     # build de producción
+pnpm preview   # preview del build
 ```
 
-## Production
+## Estructura
 
-Build the application for production:
+- `app/components` — secciones del sitio (Hero, About, Stack, Experience, Projects, Contact)
+- `app/utils/content.ts` — todo el contenido textual (ES/EN) en un solo lugar
+- `app/composables` — tema, idioma y paleta de comandos
 
-```bash
-# npm
-npm run build
+---
 
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+[Aylton Mesias Martinez](https://github.com/ADolmos194) — Full Stack Developer

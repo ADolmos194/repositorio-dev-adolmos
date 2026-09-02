@@ -4,7 +4,7 @@ const { c } = useLocale()
 
 <template>
   <section id="projects" data-accent="blue">
-    <SectionHead n="04" :title="c.projects.title" status="STATE: BUILDING" />
+    <SectionHead n="04" :title="c.projects.title" status="STATE: ACTIVE_DEV" />
     <p class="cmd"><span class="c">~$</span> {{ c.projects.cmd }}</p>
 
     <div class="soon">
@@ -12,10 +12,22 @@ const { c } = useLocale()
       <span class="st">[ {{ c.projects.status }} ]</span>
       <h3>{{ c.projects.heading }}</h3>
       <p>{{ c.projects.body }}</p>
+
+      <div class="proj-stack">
+        <span v-for="t in c.projects.stack" :key="t" class="tag">
+          <Icon class="ico" :name="skillIcon(t)" :style="{ color: skillColor(t) }" />{{ t }}
+        </span>
+      </div>
+
+      <a class="go-btn go-btn--dl proj-link" :href="c.projects.repo" target="_blank" rel="noopener">
+        <span class="go-btn__k">~$ git clone</span>
+        <span class="go-btn__v">{{ c.projects.repoLabel }}</span>
+        <Icon class="go-btn__ico" name="lucide:external-link" />
+      </a>
     </div>
 
     <div class="proj-plan">
-      <div class="panel__title">// {{ c.projects.plannedHeading }}</div>
+      <div class="panel__title">// {{ c.projects.featuresHeading }}</div>
       <div class="features">
         <div v-for="f in c.projects.features" :key="f" class="feat">
           <Icon class="ico" name="lucide:check-circle-2" />{{ f }}
@@ -27,4 +39,6 @@ const { c } = useLocale()
 
 <style scoped>
 .proj-plan { margin-top: 22px; }
+.proj-stack { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 14px 0 4px; }
+.proj-link { justify-content: center; margin-top: 16px; }
 </style>

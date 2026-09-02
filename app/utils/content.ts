@@ -46,8 +46,11 @@ export interface LocaleContent {
     status: string
     heading: string
     body: string
-    plannedHeading: string
+    stack: string[]
+    featuresHeading: string
     features: string[]
+    repoLabel: string
+    repo: string
   }
   contact: {
     cmd: string
@@ -82,9 +85,11 @@ const skillTags = {
   ],
   frontend: [
     { label: 'Vue 3' },
+    { label: 'React' },
     { label: 'Nuxt' },
     { label: 'Vite' },
     { label: 'Tailwind' },
+    { label: 'AG Grid' },
     { label: 'Handsontable' },
     { label: 'Flutter' },
     { label: 'Push' },
@@ -200,17 +205,20 @@ export const siteContent: Record<Locale, LocaleContent> = {
     projects: {
       cmd: 'ls ./projects',
       title: 'proyectos',
-      status: 'en construcción',
-      heading: 'Próximamente',
-      body: 'Estoy desarrollando un proyecto full-stack de gestión de tareas y gastos personales para mostrar aquí mi trabajo de punta a punta.',
-      plannedHeading: 'Lo que incluirá este proyecto',
+      status: 'proyecto propio · en desarrollo activo',
+      heading: 'Gestión de Gastos e Ingresos',
+      body: 'Aplicación full-stack para el control de gastos e ingresos, con autenticación segura, control de acceso por roles (RBAC), auditoría completa de cambios e importación masiva desde Excel.',
+      stack: ['Django REST', 'PostgreSQL', 'React', 'AG Grid', 'Tailwind'],
+      featuresHeading: 'Funcionalidades',
       features: [
-        'Gestión de tareas y actividades',
-        'Registro de gastos por categoría',
-        'Dashboard con gráficos en tiempo real',
-        'API REST con Django + PostgreSQL',
-        'App móvil en Flutter con notificaciones push',
+        'Registro y login con verificación de correo + JWT',
+        'Roles, permisos y menús configurables por usuario',
+        'Historial de auditoría: quién y cuándo modificó cada registro',
+        'Grid de datos editable en línea (AG Grid) con filtros y exportación',
+        'Importación masiva desde Excel con vista previa antes de confirmar',
       ],
+      repoLabel: 'Ver código en GitHub',
+      repo: 'https://github.com/ADolmos194/gestion-gastos-ingresos',
     },
     contact: {
       cmd: './connect.sh',
@@ -339,17 +347,20 @@ export const siteContent: Record<Locale, LocaleContent> = {
     projects: {
       cmd: 'ls ./projects',
       title: 'projects',
-      status: 'under construction',
-      heading: 'Coming soon',
-      body: 'I am building a full-stack personal task & expense management project to showcase my end-to-end work here.',
-      plannedHeading: 'What this project will include',
+      status: 'personal project · active development',
+      heading: 'Expense & Income Management',
+      body: 'Full-stack app for tracking expenses and income, with secure authentication, role-based access control (RBAC), full change auditing, and bulk import from Excel.',
+      stack: ['Django REST', 'PostgreSQL', 'React', 'AG Grid', 'Tailwind'],
+      featuresHeading: 'Features',
       features: [
-        'Task & activity management',
-        'Expense tracking by category',
-        'Real-time dashboard with charts',
-        'REST API with Django + PostgreSQL',
-        'Flutter mobile app with push notifications',
+        'Sign up / login with email verification + JWT',
+        'Configurable roles, permissions and menus per user',
+        'Audit history: who changed what, and when',
+        'Inline-editable data grid (AG Grid) with filters and export',
+        'Bulk import from Excel with a preview step before confirming',
       ],
+      repoLabel: 'View code on GitHub',
+      repo: 'https://github.com/ADolmos194/gestion-gastos-ingresos',
     },
     contact: {
       cmd: './connect.sh',
