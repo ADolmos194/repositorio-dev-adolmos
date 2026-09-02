@@ -86,5 +86,5 @@ const channels = [
 .step__n { color: var(--accent); font-size: 12px; font-weight: 700; padding-top: 1px; }
 .step__body { display: grid; gap: 2px; }
 .step__body b { color: var(--text); font-size: 13px; font-weight: 600; }
-.step__body span { color: var(--text-dim); font-size: 12.5px; line-height: 1.5; }
+.step__body span { color: var(--text-dim); font-size: 13px; line-height: 1.5; font-family: var(--sans); }
 </style>

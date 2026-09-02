@@ -30,7 +30,7 @@ const { c } = useLocale()
 </template>
 
 <style scoped>
-.intro { margin: -4px 0 18px; color: var(--text-dim); font-size: 13.5px; max-width: 62ch; }
+.intro { margin: -4px 0 18px; color: var(--text-dim); font-size: 13.5px; max-width: 62ch; font-family: var(--sans); }
 
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
 
@@ -42,7 +42,12 @@ const { c } = useLocale()
 }
 .svc-card__head h3::before { content: none; }
 .svc-card__ico { font-size: 20px; color: var(--accent); flex: none; }
-.svc-card__body { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--text-dim); }
+.svc-card__body { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--text-dim); font-family: var(--sans); }
 
 .svc-cta { justify-content: center; margin-top: 22px; }
+/* the one other spot the gradient shows up — only on interaction, never at rest */
+.svc-cta:hover .go-btn__v {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 </style>
