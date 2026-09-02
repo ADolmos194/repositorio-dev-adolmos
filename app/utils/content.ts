@@ -19,6 +19,7 @@ export interface LocaleContent {
     typed: string
     roleLead: string
     metas: string[]
+    ctaHint: string
   }
   facts: {
     heading: string
@@ -107,6 +108,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       typed: 'Convierto problemas reales de negocio en software confiable: del modelo de datos a la interfaz, listo para producción.',
       roleLead: 'Desarrollador',
       metas: ['Trujillo, La Libertad · Perú', 'Ing. de Sistemas — UCV', 'ES nativo · EN A2'],
+      ctaHint: 'Hacé clic en cualquiera para ir directo a esa sección',
     },
     facts: {
       heading: 'info',
@@ -267,6 +269,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       typed: 'I turn real business problems into reliable software: from the data model to the interface, production-ready.',
       roleLead: 'Developer',
       metas: ['Trujillo, La Libertad · Peru', 'Systems Engineering — UCV', 'ES native · EN A2'],
+      ctaHint: 'Click either one to jump straight to that section',
     },
     facts: {
       heading: 'info',

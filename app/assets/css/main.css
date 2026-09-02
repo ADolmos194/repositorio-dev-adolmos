@@ -258,6 +258,7 @@ body {
 .hero__meta span::before { content: ""; width: 6px; height: 6px; background: var(--text-mute); border-radius: 50%; }
 
 .cta-row { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
+.cta-hint { margin: 10px 0 0 2px; font-size: 12px; color: var(--text-mute); font-family: var(--sans); }
 .btn {
   font-family: var(--mono); font-size: 13.5px; text-decoration: none;
   padding: 11px 20px; border-radius: 7px; border: 1px solid var(--line);

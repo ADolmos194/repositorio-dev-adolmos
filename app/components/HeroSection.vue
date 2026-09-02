@@ -68,6 +68,7 @@ const facts = computed(() => [
             <Icon class="go-btn__ico" name="lucide:arrow-left" />
           </a>
         </div>
+        <p class="cta-hint">{{ c.hero.ctaHint }}</p>
       </div>
 
       <aside class="telemetry">
