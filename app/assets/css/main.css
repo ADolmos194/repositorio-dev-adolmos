@@ -274,14 +274,14 @@ body {
    boxed button. No card, no border, no rule above it — just a command
    line that changes color on hover. */
 .go-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  width: fit-content;
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px 8px;
+  width: fit-content; max-width: 100%;
   color: var(--text-dim); text-decoration: none;
   font-size: 13.5px; letter-spacing: .2px;
   transition: color .18s;
 }
 .go-btn:hover, .go-btn:focus-visible { color: var(--accent); outline: none; }
-.go-btn__k { color: var(--text-mute); }
+.go-btn__k { color: var(--text-mute); white-space: nowrap; }
 .go-btn__v { color: var(--text); font-weight: 600; transition: color .18s; }
 .go-btn:hover .go-btn__v { color: var(--accent); }
 .go-btn__ico { font-size: 13px; transition: transform .18s; }
@@ -521,14 +521,12 @@ section { padding: 96px 0 64px; scroll-margin-top: 70px; border-top: 1px solid v
   * { animation: none !important; scroll-behavior: auto; transition: none !important; }
   .cursor { opacity: 1; }
 }
-@media (max-width: 680px) {
-  .wrap { padding: 12px; }
-  .term { border-radius: 8px; }
-  .term__path { display: none; }
-  .term__body { padding: 26px 16px 30px; }
-  .hero__meta { gap: 8px 16px; }
-
-  /* terminal bar → hamburger dropdown menu */
+/* terminal bar → hamburger dropdown menu. Own breakpoint, wider than the
+   general small-screen one below: 7 nav links + ES/EN + theme toggle no
+   longer fit in one row at tablet widths (e.g. 768px) once "servicios"
+   joined the list, so this has to kick in earlier than the rest of the
+   small-screen tweaks. */
+@media (max-width: 900px) {
   .term__bar { padding: 10px 12px; }
   .term__burger { display: inline-flex; }
   .term__nav {
@@ -543,6 +541,14 @@ section { padding: 96px 0 64px; scroll-margin-top: 70px; border-top: 1px solid v
   .term__nav a { font-size: 13px; padding: 9px 12px; }
   .seg { margin: 5px 0 0; align-self: flex-start; }
   .term__nav .theme-btn { margin: 6px 0 0; align-self: flex-start; }
+}
+
+@media (max-width: 680px) {
+  .wrap { padding: 12px; }
+  .term { border-radius: 8px; }
+  .term__path { display: none; }
+  .term__body { padding: 26px 16px 30px; }
+  .hero__meta { gap: 8px 16px; }
 
   /* section header never overflows on narrow screens */
   .sec-head { flex-wrap: wrap; row-gap: 8px; }
