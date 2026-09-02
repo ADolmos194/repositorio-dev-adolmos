@@ -60,12 +60,12 @@ const facts = computed(() => [
           <a href="#experience" class="go-btn">
             <span class="go-btn__k">~$ cd</span>
             <span class="go-btn__v">./{{ c.nav.experience }}</span>
-            <Icon class="go-btn__ico" name="lucide:arrow-right" />
+            <Icon class="go-btn__ico" name="lucide:arrow-left" />
           </a>
           <a href="#contact" class="go-btn">
             <span class="go-btn__k">~$ cd</span>
             <span class="go-btn__v">./{{ c.nav.contact }}</span>
-            <Icon class="go-btn__ico" name="lucide:arrow-right" />
+            <Icon class="go-btn__ico" name="lucide:arrow-left" />
           </a>
         </div>
         <p class="cta-hint">{{ c.hero.ctaHint }}</p>

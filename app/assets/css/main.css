@@ -286,7 +286,7 @@ body {
 .go-btn__v { color: var(--text); font-weight: 600; transition: color .18s; }
 .go-btn:hover .go-btn__v { color: var(--accent); }
 .go-btn__ico { font-size: 13px; transition: transform .18s; }
-.go-btn:hover .go-btn__ico { transform: translateX(4px); }
+.go-btn:hover .go-btn__ico { transform: translateX(-4px); }
 /* download nudges down instead of sliding right — it's not going to another page */
 .go-btn--dl:hover .go-btn__ico { transform: translateY(3px); }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
