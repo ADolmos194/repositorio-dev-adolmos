@@ -28,8 +28,9 @@ function go(path: string) {
 }
 
 const commands = computed<Command[]>(() => [
-  { id: 'home', group: 'nav', label: 'home', icon: 'lucide:terminal-square', run: () => go('/') },
+  { id: 'home', group: 'nav', label: 'home', icon: 'lucide:square-terminal', run: () => go('/') },
   { id: 'about', group: 'nav', label: c.value.nav.about, icon: 'lucide:user', run: () => go('/about') },
+  { id: 'services', group: 'nav', label: c.value.nav.services, icon: 'lucide:sparkles', run: () => go('/services') },
   { id: 'stack', group: 'nav', label: c.value.nav.stack, icon: 'lucide:layers', run: () => go('/stack') },
   { id: 'experience', group: 'nav', label: c.value.nav.experience, icon: 'lucide:briefcase', run: () => go('/experience') },
   { id: 'projects', group: 'nav', label: c.value.nav.projects, icon: 'lucide:folder-git-2', run: () => go('/projects') },

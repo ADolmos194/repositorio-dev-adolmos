@@ -4,7 +4,7 @@ const { c } = useLocale()
 
 <template>
   <section id="projects" data-accent="blue">
-    <SectionHead n="04" :title="c.projects.title" status="STATE: ACTIVE_DEV" />
+    <SectionHead n="05" :title="c.projects.title" status="STATE: ACTIVE_DEV" />
     <p class="cmd"><span class="c">~$</span> {{ c.projects.cmd }}</p>
 
     <div class="soon">
@@ -30,7 +30,7 @@ const { c } = useLocale()
       <div class="panel__title">// {{ c.projects.featuresHeading }}</div>
       <div class="features">
         <div v-for="f in c.projects.features" :key="f" class="feat">
-          <Icon class="ico" name="lucide:check-circle-2" />{{ f }}
+          <Icon class="ico" name="lucide:circle-check-big" />{{ f }}
         </div>
       </div>
     </div>

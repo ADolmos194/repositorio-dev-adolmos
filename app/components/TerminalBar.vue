@@ -9,6 +9,7 @@ watch(() => route.path, () => { open.value = false })
 
 const links = computed(() => [
   { to: '/about', label: c.value.nav.about },
+  { to: '/services', label: c.value.nav.services },
   { to: '/stack', label: c.value.nav.stack },
   { to: '/experience', label: c.value.nav.experience },
   { to: '/projects', label: c.value.nav.projects },

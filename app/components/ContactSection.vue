@@ -35,7 +35,7 @@ const channels = [
 
 <template>
   <section id="contact" class="contact" data-accent="blue">
-    <SectionHead n="05" :title="c.contact.title" />
+    <SectionHead n="06" :title="c.contact.title" />
     <p class="cmd"><span class="c">~$</span> {{ c.contact.cmd }}</p>
 
     <div class="cols cols--contact">

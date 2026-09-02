@@ -10,7 +10,7 @@ const companies = computed(
 
 <template>
   <section id="experience" data-accent="green">
-    <SectionHead n="03" :title="c.experience.title" status="LOG: VERIFIED" />
+    <SectionHead n="04" :title="c.experience.title" status="LOG: VERIFIED" />
     <p class="cmd"><span class="c">~$</span> {{ c.experience.cmd }}</p>
 
     <div class="stats">

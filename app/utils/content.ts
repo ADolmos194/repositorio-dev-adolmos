@@ -14,7 +14,7 @@ export interface SkillGroup {
 }
 
 export interface LocaleContent {
-  nav: { home: string; about: string; stack: string; experience: string; projects: string; contact: string }
+  nav: { home: string; about: string; services: string; stack: string; experience: string; projects: string; contact: string }
   hero: {
     typed: string
     roleLead: string
@@ -31,6 +31,13 @@ export interface LocaleContent {
     availability: string
   }
   about: { cmd: string; title: string; paragraphs: string[]; highlights: string[]; downloadCv: string }
+  services: {
+    cmd: string
+    title: string
+    intro: string
+    items: { icon: string; title: string; body: string; tags: string[] }[]
+    ctaLabel: string
+  }
   stack: { cmd: string; title: string; groups: SkillGroup[]; stats: { total: string; categories: string; learning: string } }
   experience: {
     cmd: string
@@ -108,9 +115,9 @@ const skillTags = {
 
 export const siteContent: Record<Locale, LocaleContent> = {
   es: {
-    nav: { home: 'inicio', about: 'sobre-mí', stack: 'stack', experience: 'experiencia', projects: 'proyectos', contact: 'contacto' },
+    nav: { home: 'inicio', about: 'sobre-mí', services: 'servicios', stack: 'stack', experience: 'experiencia', projects: 'proyectos', contact: 'contacto' },
     hero: {
-      typed: 'Construyo soluciones web y móviles de punta a punta, del backend a la interfaz.',
+      typed: 'Convierto problemas reales de negocio en software confiable: del modelo de datos a la interfaz, listo para producción.',
       roleLead: 'Desarrollador',
       metas: ['Trujillo, La Libertad · Perú', 'Ing. de Sistemas — UCV', 'ES nativo · EN A2'],
     },
@@ -122,22 +129,55 @@ export const siteContent: Record<Locale, LocaleContent> = {
       experience: 'Desde 2019 en TI',
       languages: 'ES nativo · EN A2',
       focus: 'Vue · Nuxt · Django · Flutter',
-      availability: 'Disponible para proyectos',
+      availability: 'Disponible: freelance y full-time',
     },
     about: {
       cmd: 'cat about.md',
       title: 'sobre_mí',
       paragraphs: [
-        'Desarrollador <span class="hl">Full Stack</span> con base en Trujillo. Construyo plataformas web y móviles de punta a punta: del modelo de datos en <span class="hlb">PostgreSQL</span> y las APIs en <span class="hlb">Django REST</span>, hasta interfaces en <span class="hlb">Vue 3 / Nuxt</span> y apps en <span class="hlb">Flutter</span>.',
+        'Desarrollador <span class="hl">Full Stack</span> con base en Trujillo. Me hago cargo de tu proyecto completo: del modelo de datos en <span class="hlb">PostgreSQL</span> y las APIs en <span class="hlb">Django REST</span>, hasta interfaces en <span class="hlb">Vue 3 / Nuxt / React</span> y apps en <span class="hlb">Flutter</span>.',
         'Vengo de una ruta poco común: empecé en <span class="hl">soporte técnico y hardware</span>, y esa mentalidad de diagnóstico la traigo al software — encontrar el bug crítico, estabilizar el sistema y dejar el código mantenible con <span class="hlb">Conventional Commits</span> y CI/CD.',
+        'Si tu equipo necesita a alguien que resuelva bugs críticos en producción rápido, <span class="hl">y</span> también construya features nuevas sin necesitar supervisión constante, ese soy yo — disponible tanto para proyectos freelance como para un rol full-time.',
       ],
       highlights: [
-        'Web & mobile de punta a punta',
+        'Un solo dev, todo el stack cubierto',
         'De PostgreSQL a la interfaz',
         'Mentalidad de diagnóstico (ex-soporte)',
         'Código mantenible · CI/CD',
       ],
       downloadCv: 'cv-aylton-martinez.pdf',
+    },
+    services: {
+      cmd: 'cat services.json | jq',
+      title: 'servicios',
+      intro: 'Cómo puedo ayudarte, ya sea por un proyecto puntual o como parte de tu equipo.',
+      items: [
+        {
+          icon: 'lucide:layout-panel-top',
+          title: 'Desarrollo Full Stack a medida',
+          body: 'Plataformas web completas: modelo de datos, API REST y una interfaz que la gente realmente puede usar.',
+          tags: ['Django REST', 'PostgreSQL', 'Vue / React'],
+        },
+        {
+          icon: 'lucide:smartphone',
+          title: 'Apps móviles multiplataforma',
+          body: 'Apps Android/iOS desde una sola base de código, con notificaciones push cuando el producto lo necesita.',
+          tags: ['Flutter', 'Firebase', 'Push'],
+        },
+        {
+          icon: 'lucide:stethoscope',
+          title: 'Estabilización de sistemas en producción',
+          body: 'Diagnóstico y corrección de bugs críticos, reducción de incidencias recurrentes y código más mantenible.',
+          tags: ['Debugging', 'CI/CD', 'Conv. Commits'],
+        },
+        {
+          icon: 'lucide:workflow',
+          title: 'Automatización e integraciones',
+          body: 'Importación/exportación de datos, integraciones entre sistemas y procesos manuales convertidos en flujos automáticos.',
+          tags: ['APIs', 'Excel', 'Webhooks'],
+        },
+      ],
+      ctaLabel: 'Hablemos de tu proyecto',
     },
     stack: {
       cmd: 'ls -la ./skills',
@@ -250,9 +290,9 @@ export const siteContent: Record<Locale, LocaleContent> = {
   },
 
   en: {
-    nav: { home: 'home', about: 'about', stack: 'stack', experience: 'experience', projects: 'projects', contact: 'contact' },
+    nav: { home: 'home', about: 'about', services: 'services', stack: 'stack', experience: 'experience', projects: 'projects', contact: 'contact' },
     hero: {
-      typed: 'Building end-to-end web & mobile solutions, from backend to interface.',
+      typed: 'I turn real business problems into reliable software: from the data model to the interface, production-ready.',
       roleLead: 'Developer',
       metas: ['Trujillo, La Libertad · Peru', 'Systems Engineering — UCV', 'ES native · EN A2'],
     },
@@ -264,22 +304,55 @@ export const siteContent: Record<Locale, LocaleContent> = {
       experience: 'In IT since 2019',
       languages: 'ES native · EN A2',
       focus: 'Vue · Nuxt · Django · Flutter',
-      availability: 'Available for projects',
+      availability: 'Available: freelance & full-time',
     },
     about: {
       cmd: 'cat about.md',
       title: 'about_me',
       paragraphs: [
-        '<span class="hl">Full Stack</span> developer based in Trujillo, Peru. I build web and mobile platforms end to end: from the data model in <span class="hlb">PostgreSQL</span> and the APIs in <span class="hlb">Django REST</span>, to interfaces in <span class="hlb">Vue 3 / Nuxt</span> and apps in <span class="hlb">Flutter</span>.',
+        '<span class="hl">Full Stack</span> developer based in Trujillo, Peru. I take full ownership of your project: from the data model in <span class="hlb">PostgreSQL</span> and the APIs in <span class="hlb">Django REST</span>, to interfaces in <span class="hlb">Vue 3 / Nuxt / React</span> and apps in <span class="hlb">Flutter</span>.',
         'I come from an unusual path: I started in <span class="hl">technical support and hardware</span>, and I bring that diagnostic mindset to software — finding the critical bug, stabilizing the system, and keeping the code maintainable with <span class="hlb">Conventional Commits</span> and CI/CD.',
+        'If your team needs someone who can fix critical production bugs fast <span class="hl">and</span> ship new features without needing much hand-holding, that\'s me — open to freelance projects and full-time roles alike.',
       ],
       highlights: [
-        'End-to-end web & mobile',
+        'One dev, the whole stack covered',
         'From PostgreSQL to the UI',
         'Diagnostic mindset (ex-support)',
         'Maintainable code · CI/CD',
       ],
       downloadCv: 'cv-aylton-martinez.pdf',
+    },
+    services: {
+      cmd: 'cat services.json | jq',
+      title: 'services',
+      intro: 'How I can help, whether it\'s a one-off project or as part of your team.',
+      items: [
+        {
+          icon: 'lucide:layout-panel-top',
+          title: 'Custom Full Stack development',
+          body: 'Complete web platforms: data model, REST API, and an interface people can actually use.',
+          tags: ['Django REST', 'PostgreSQL', 'Vue / React'],
+        },
+        {
+          icon: 'lucide:smartphone',
+          title: 'Cross-platform mobile apps',
+          body: 'Android/iOS apps from a single codebase, with push notifications when the product needs them.',
+          tags: ['Flutter', 'Firebase', 'Push'],
+        },
+        {
+          icon: 'lucide:stethoscope',
+          title: 'Production system stabilization',
+          body: 'Diagnosing and fixing critical bugs, cutting down recurring incidents, and leaving the codebase more maintainable.',
+          tags: ['Debugging', 'CI/CD', 'Conv. Commits'],
+        },
+        {
+          icon: 'lucide:workflow',
+          title: 'Automation & integrations',
+          body: 'Data import/export, integrations between systems, and manual processes turned into automated flows.',
+          tags: ['APIs', 'Excel', 'Webhooks'],
+        },
+      ],
+      ctaLabel: 'Let\'s talk about your project',
     },
     stack: {
       cmd: 'ls -la ./skills',

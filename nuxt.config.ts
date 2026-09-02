@@ -24,9 +24,25 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Portafolio de Aylton Martinez — Desarrollador Full Stack (Vue 3, Nuxt, Django, Flutter) en Trujillo, Perú.',
+            'Aylton Martinez — Full Stack Developer en Trujillo, Perú. Desarrollo web y móvil con Vue/React, Django y Flutter. Disponible para proyectos freelance y roles full-time.',
         },
         { name: 'theme-color', content: '#000000' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:title', content: 'Aylton Martinez · Full Stack Developer' },
+        {
+          property: 'og:description',
+          content:
+            'Desarrollo web y móvil con Vue/React, Django y Flutter. Disponible para proyectos freelance y roles full-time.',
+        },
+        { property: 'og:image', content: '/FOTOCV.png' },
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: 'Aylton Martinez · Full Stack Developer' },
+        {
+          name: 'twitter:description',
+          content:
+            'Desarrollo web y móvil con Vue/React, Django y Flutter. Disponible para proyectos freelance y roles full-time.',
+        },
+        { name: 'twitter:image', content: '/FOTOCV.png' },
       ],
       link: [
         {

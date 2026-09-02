@@ -9,7 +9,7 @@ const learningLabels = computed(() =>
 
 <template>
   <section id="stack" data-accent="blue">
-    <SectionHead n="02" :title="c.stack.title" status="MODULES: LOADED" />
+    <SectionHead n="03" :title="c.stack.title" status="MODULES: LOADED" />
     <p class="cmd"><span class="c">~$</span> {{ c.stack.cmd }}</p>
 
     <div class="stats">
