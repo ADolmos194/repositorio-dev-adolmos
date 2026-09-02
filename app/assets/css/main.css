@@ -289,8 +289,6 @@ body {
 .go-btn:hover .go-btn__ico { transform: translateX(4px); }
 /* download nudges down instead of sliding right — it's not going to another page */
 .go-btn--dl:hover .go-btn__ico { transform: translateY(3px); }
-/* nav shortcuts (hero) lead with a left-pointing caret, so the hover nudge goes left to match */
-.go-btn--nav:hover .go-btn__ico { transform: translateX(-4px); }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ── section shell ───────────────────────────── */

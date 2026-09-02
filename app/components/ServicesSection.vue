@@ -21,7 +21,7 @@ const { c } = useLocale()
     </div>
 
     <div class="svc-cta-wrap">
-      <a href="#contact" class="go-btn go-btn--dl svc-cta">
+      <a href="#contact" class="go-btn svc-cta">
         <span class="go-btn__k">~$ cd</span>
         <span class="go-btn__v">{{ c.services.ctaLabel }}</span>
         <Icon class="go-btn__ico" name="lucide:arrow-right" />

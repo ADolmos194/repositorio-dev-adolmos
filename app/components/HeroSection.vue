@@ -57,15 +57,15 @@ const facts = computed(() => [
         </div>
 
         <div class="cta-row">
-          <a href="#experience" class="go-btn go-btn--nav">
+          <a href="#experience" class="go-btn">
             <span class="go-btn__k">~$ cd</span>
             <span class="go-btn__v">./{{ c.nav.experience }}</span>
-            <Icon class="go-btn__ico" name="lucide:arrow-left" />
+            <Icon class="go-btn__ico" name="lucide:arrow-right" />
           </a>
-          <a href="#contact" class="go-btn go-btn--nav">
+          <a href="#contact" class="go-btn">
             <span class="go-btn__k">~$ cd</span>
             <span class="go-btn__v">./{{ c.nav.contact }}</span>
-            <Icon class="go-btn__ico" name="lucide:arrow-left" />
+            <Icon class="go-btn__ico" name="lucide:arrow-right" />
           </a>
         </div>
         <p class="cta-hint">{{ c.hero.ctaHint }}</p>
