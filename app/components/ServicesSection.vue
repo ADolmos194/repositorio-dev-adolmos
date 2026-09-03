@@ -8,7 +8,12 @@ const { c } = useLocale()
     <p class="intro">{{ c.services.intro }}</p>
 
     <div class="services-grid">
-      <div v-for="item in c.services.items" :key="item.title" class="card svc-card">
+      <div
+        v-for="(item, i) in c.services.items"
+        :key="item.title"
+        class="card svc-card reveal"
+        :style="{ '--reveal-delay': `${i * 70}ms` }"
+      >
         <div class="svc-card__head">
           <Icon class="svc-card__ico" :name="item.icon" />
           <h3>{{ item.title }}</h3>
@@ -37,9 +42,12 @@ const { c } = useLocale()
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
 
 .svc-card { display: flex; flex-direction: column; gap: 10px; }
-.svc-card__head { display: flex; align-items: center; gap: 10px; }
+/* titles run 1-2 lines depending on length ("Apps móviles..." vs
+   "Estabilización de sistemas...") — without a reserved height here,
+   the description below starts at a different Y per card in the same row */
+.svc-card__head { display: flex; align-items: center; gap: 10px; min-height: 34px; }
 .svc-card__head h3 {
-  margin: 0; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+  margin: 0; font-size: 12px; line-height: 1.4; letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--accent); font-weight: 600;
 }
 .svc-card__head h3::before { content: none; }

@@ -30,13 +30,13 @@ onBeforeUnmount(() => {
 
 const heroStack = ['Vue 3', 'Nuxt', 'Django', 'Flutter']
 
+/* role, location and stack are already stated in the eyebrow and the
+   stack strip below — this panel only adds facts not shown elsewhere
+   in the hero, so nothing repeats within the same view. */
 const facts = computed(() => [
-  { icon: 'lucide:user', value: c.value.facts.role },
-  { icon: 'lucide:map-pin', value: c.value.facts.location },
   { icon: 'lucide:graduation-cap', value: c.value.facts.education },
   { icon: 'lucide:briefcase', value: c.value.facts.experience },
   { icon: 'lucide:languages', value: c.value.facts.languages },
-  { icon: 'lucide:target', value: c.value.facts.focus },
 ])
 </script>
 
@@ -44,19 +44,19 @@ const facts = computed(() => [
   <header id="home" class="hero" data-accent="green">
     <div class="home">
       <div>
-        <h1><span class="glitch" data-t="Aylton Martinez">Aylton Martinez</span></h1>
+        <div class="eyebrow"><span class="eyebrow__dot" />{{ c.hero.roleLead }} Full Stack &mdash; {{ c.facts.location }}</div>
 
-        <p class="role">
-          &gt; <span class="g">{{ c.hero.roleLead }}</span> Full Stack ·
-          <span v-for="(tech, i) in heroStack" :key="tech" class="role-tech">
-            <Icon class="ico" :name="skillIcon(tech)" :style="{ color: skillColor(tech) }" />{{ tech }}<span v-if="i < heroStack.length - 1" class="sep">·</span>
-          </span>
-        </p>
+        <h1>Aylton Martinez</h1>
 
         <div class="hero__type">{{ typed }}<span class="cursor"></span>
         </div>
 
         <div class="cta-row">
+          <a href="/cv-aylton-martinez.pdf" class="go-btn go-btn--dl go-btn--primary" download>
+            <span class="go-btn__k">~$ wget</span>
+            <span class="go-btn__v">{{ c.about.downloadCv }}</span>
+            <Icon class="go-btn__ico" name="lucide:download" />
+          </a>
           <a href="#experience" class="go-btn">
             <span class="go-btn__k">~$ cd</span>
             <span class="go-btn__v">./{{ c.nav.experience }}</span>
@@ -69,10 +69,16 @@ const facts = computed(() => [
           </a>
         </div>
         <p class="cta-hint">{{ c.hero.ctaHint }}</p>
+
+        <div class="hero-stack">
+          <span v-for="tech in heroStack" :key="tech" class="hero-stack__item">
+            <Icon class="ico" :name="skillIcon(tech)" :style="{ color: skillColor(tech) }" />{{ tech }}
+          </span>
+        </div>
       </div>
 
       <aside class="telemetry">
-        <div class="panel">
+        <div class="panel reveal">
           <div class="panel__title">{{ c.facts.heading }}</div>
           <div class="fact-list">
             <div v-for="f in facts" :key="f.icon" class="fact">

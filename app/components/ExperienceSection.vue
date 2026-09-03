@@ -19,7 +19,13 @@ const companies = computed(
     </div>
 
     <div class="timeline">
-      <article v-for="(job, i) in c.experience.jobs" :key="i" class="tl-item" :class="{ now: job.now }">
+      <article
+        v-for="(job, i) in c.experience.jobs"
+        :key="i"
+        class="tl-item reveal"
+        :class="{ now: job.now }"
+        :style="{ '--reveal-delay': `${i * 100}ms` }"
+      >
         <span class="tl-node" aria-hidden="true" />
 
         <div class="tl-card">

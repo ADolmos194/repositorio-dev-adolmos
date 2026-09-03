@@ -1,22 +1,22 @@
 <script setup lang="ts">
 const { init } = useTheme()
 onMounted(init)
+
+useHead({
+  noscript: [{ innerHTML: '<style>.reveal{opacity:1!important;transform:none!important}</style>' }],
+})
 </script>
 
 <template>
   <div>
-    <div class="bg-grid" aria-hidden="true" />
-    <div class="bg-vignette" aria-hidden="true" />
-    <div class="bg-scanlines" aria-hidden="true" />
+    <div class="bg-texture" aria-hidden="true" />
 
-    <div class="wrap">
-      <main class="term">
-        <TerminalBar />
-        <div class="term__body">
-          <NuxtPage />
-        </div>
-        <SiteFooter />
+    <div class="page">
+      <TerminalBar />
+      <main class="site-main">
+        <NuxtPage />
       </main>
+      <SiteFooter />
     </div>
   </div>
 </template>

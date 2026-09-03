@@ -18,7 +18,6 @@ export interface LocaleContent {
   hero: {
     typed: string
     roleLead: string
-    metas: string[]
     ctaHint: string
   }
   facts: {
@@ -107,8 +106,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
     hero: {
       typed: 'Convierto problemas reales de negocio en software confiable: del modelo de datos a la interfaz, listo para producción.',
       roleLead: 'Desarrollador',
-      metas: ['Trujillo, La Libertad · Perú', 'Ing. de Sistemas — UCV', 'ES nativo · EN A2'],
-      ctaHint: 'Hacé clic en cualquiera para ir directo a esa sección',
+      ctaHint: 'Hacé clic en cualquiera para ir directo a esa sección o descargar mi CV',
     },
     facts: {
       heading: 'info',
@@ -239,6 +237,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         'Registro y login con verificación de correo + JWT',
         'Roles, permisos y menús configurables por usuario',
         'Historial de auditoría: quién y cuándo modificó cada registro',
+        'Modelo base compartido en el backend: cada entidad nueva hereda estado, auditoría y trazabilidad sin repetir código',
         'Grid de datos editable en línea (AG Grid) con filtros y exportación',
         'Importación masiva desde Excel con vista previa antes de confirmar',
       ],
@@ -268,8 +267,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
     hero: {
       typed: 'I turn real business problems into reliable software: from the data model to the interface, production-ready.',
       roleLead: 'Developer',
-      metas: ['Trujillo, La Libertad · Peru', 'Systems Engineering — UCV', 'ES native · EN A2'],
-      ctaHint: 'Click either one to jump straight to that section',
+      ctaHint: 'Click any of these to jump to that section, or grab my resume',
     },
     facts: {
       heading: 'info',
@@ -400,6 +398,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         'Sign up / login with email verification + JWT',
         'Configurable roles, permissions and menus per user',
         'Audit history: who changed what, and when',
+        'Shared base model in the backend: every new entity inherits status, auditing and traceability with zero boilerplate',
         'Inline-editable data grid (AG Grid) with filters and export',
         'Bulk import from Excel with a preview step before confirming',
       ],

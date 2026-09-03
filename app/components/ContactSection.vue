@@ -40,13 +40,13 @@ const channels = [
     <div class="cols cols--contact">
       <div class="socials">
         <a
-          v-for="ch in channels"
+          v-for="(ch, i) in channels"
           :key="ch.key"
-          class="social"
+          class="social reveal"
           :href="ch.href"
           :target="ch.ext ? '_blank' : undefined"
           :rel="ch.ext ? 'noopener' : undefined"
-          :style="ch.color ? { '--sc': ch.color } : undefined"
+          :style="{ ...(ch.color ? { '--sc': ch.color } : {}), '--reveal-delay': `${i * 80}ms` }"
         >
           <Icon class="ico" :name="ch.icon" :style="ch.color ? { color: ch.color } : undefined" />
           <span class="lbl">{{ ch.label }}<small>{{ ch.value }}</small></span>
@@ -54,10 +54,15 @@ const channels = [
         <p class="loc"><Icon name="lucide:map-pin" /> {{ c.contact.location }}</p>
       </div>
 
-      <aside class="panel">
+      <aside class="panel reveal">
         <div class="panel__title">{{ c.contact.process.heading }}</div>
         <ol class="steps">
-          <li v-for="(step, i) in c.contact.process.steps" :key="step.title" class="step">
+          <li
+            v-for="(step, i) in c.contact.process.steps"
+            :key="step.title"
+            class="step reveal"
+            :style="{ '--reveal-delay': `${i * 90}ms` }"
+          >
             <span class="step__n">{{ String(i + 1).padStart(2, '0') }}</span>
             <span class="step__body">
               <b>{{ step.title }}</b>
