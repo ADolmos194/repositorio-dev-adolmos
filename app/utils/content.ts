@@ -185,7 +185,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         {
           when: 'May 2025 — Actualidad',
           now: true,
-          role: 'Auxiliar de Soporte de Software',
+          role: 'Asistente de aplicaciones y software',
           company: 'Agrovision Perú',
           bullets: [
             'Detecté y corregí errores críticos en plataformas web (Vue.js) y móviles (Flutter).',
@@ -346,7 +346,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         {
           when: 'May 2025 — Present',
           now: true,
-          role: 'Software Support Specialist',
+          role: 'Applications & Software Assistant',
           company: 'Agrovision Peru',
           bullets: [
             'Detected and fixed critical bugs in web (Vue.js) and mobile (Flutter) platforms.',

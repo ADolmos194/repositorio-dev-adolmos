@@ -52,7 +52,7 @@ const facts = computed(() => [
         </div>
 
         <div class="cta-row">
-          <a href="/cv-aylton-martinez.pdf" class="go-btn go-btn--dl go-btn--primary" download>
+          <a href="/AyltonMesiasMartinez_CV.pdf" class="go-btn go-btn--dl go-btn--primary" download="cv-aylton-martinez.pdf">
             <span class="go-btn__k">~$ wget</span>
             <span class="go-btn__v">{{ c.about.downloadCv }}</span>
             <Icon class="go-btn__ico" name="lucide:download" />
