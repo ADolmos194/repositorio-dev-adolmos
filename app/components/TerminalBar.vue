@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="term__bar">
-    <a href="#home" class="brand"><span class="brand__dot" />Aylton Mart&iacute;nez</a>
+    <a href="#home" class="brand"><span class="brand__bracket">&lt;/</span>AM<span class="brand__bracket">&gt;</span></a>
 
     <button
       class="term__burger"

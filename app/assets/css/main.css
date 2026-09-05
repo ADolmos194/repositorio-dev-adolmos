@@ -20,7 +20,8 @@
 :root {
   /* ---- dark theme (default) ---- */
   --bg:        #0d0f12;
-  --glow:      color-mix(in srgb, var(--green) 16%, transparent);
+  --glow:      color-mix(in srgb, var(--green) 20%, transparent);
+  --glow-2:    color-mix(in srgb, var(--blue) 15%, transparent);
   --surface:   #14171b;
   --surface-2: #181c21;
   --line:      #262b31;
@@ -62,7 +63,8 @@
 
 [data-theme="light"] {
   --bg:        #f3f1ec;
-  --glow:      color-mix(in srgb, var(--green) 8%, transparent);
+  --glow:      color-mix(in srgb, var(--green) 11%, transparent);
+  --glow-2:    color-mix(in srgb, var(--blue) 8%, transparent);
   --surface:   #ffffff;
   --surface-2: #ece7dc;
   --line:      #d9d2c2;
@@ -111,19 +113,21 @@ body::-webkit-scrollbar-thumb:hover { background: var(--green-dim); background-c
 html { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
 
 /* ── fixed background layer ──────────────────── */
-/* a single soft light source (top-left) plus a fine film-grain — no dot/graph
-   grid: that pattern is on every other dev portfolio. No boxed "window on a
-   desktop" backdrop either; the site is just a normal full-bleed page. */
+/* two soft, opposite-corner light sources (bronze top-left, blue bottom-right)
+   plus a fine film-grain — gives the flat base color some depth without a
+   dot/graph grid (that pattern is on every other dev portfolio) or a boxed
+   "window on a desktop" backdrop; the site is just a normal full-bleed page. */
 .bg-texture {
   position: fixed; inset: 0; z-index: 0;
   pointer-events: none;
   background-color: var(--bg);
-  background-repeat: repeat, no-repeat;
-  background-size: 220px 220px, auto;
-  background-blend-mode: overlay, normal;
+  background-repeat: repeat, no-repeat, no-repeat;
+  background-size: 220px 220px, auto, auto;
+  background-blend-mode: overlay, normal, normal;
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    radial-gradient(1200px 720px at 10% -14%, var(--glow), transparent 62%);
+    radial-gradient(1200px 720px at 10% -14%, var(--glow), transparent 62%),
+    radial-gradient(1100px 900px at 94% 116%, var(--glow-2), transparent 60%);
 }
 
 .page {
@@ -143,9 +147,10 @@ html { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line-soft);
 }
-.brand { display: flex; align-items: center; gap: 9px; color: var(--white); text-decoration: none; font-family: var(--font-heading); font-weight: 600; font-size: 15px; letter-spacing: -.2px; }
+.brand { display: flex; align-items: center; gap: 1px; color: var(--white); text-decoration: none; font-family: var(--mono); font-weight: 700; font-size: 17px; letter-spacing: -.2px; transition: color .18s; }
 .brand:hover { color: var(--white); }
-.brand__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex: none; }
+.brand__bracket { color: var(--green); font-weight: 700; transition: color .18s; }
+.brand:hover .brand__bracket { color: var(--green-dim); }
 
 .term__nav { margin-left: auto; display: flex; gap: 1px; flex-wrap: wrap; align-items: center; }
 .term__burger { display: none; }
@@ -282,7 +287,7 @@ html { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
 section, header#home { scroll-margin-top: var(--nav-h); }
 section { padding: 96px 0 64px; border-top: 1px solid var(--line-soft); }
 .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; }
-.sec-head h2 { font-family: var(--font-heading); font-size: 1.5rem; margin: 0; color: var(--white); font-weight: 600; letter-spacing: -.3px; }
+.sec-head h2 { font-family: var(--font-heading); font-size: clamp(1.7rem, 3vw, 2.35rem); margin: 0; color: var(--white); font-weight: 700; letter-spacing: -.6px; }
 .sec-head h2 .hash { color: var(--accent); }
 .sec-head .rule { flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
 .sec-head .n { color: var(--text-mute); font-size: 12.5px; }

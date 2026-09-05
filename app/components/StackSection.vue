@@ -43,7 +43,7 @@ const marqueeSkills = computed(() => {
     <div class="skills">
       <div
         v-for="(group, i) in c.stack.groups"
-        :key="group.title"
+        :key="i"
         class="card reveal"
         :style="{ '--reveal-delay': `${i * 70}ms` }"
       >

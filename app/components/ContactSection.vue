@@ -59,7 +59,7 @@ const channels = [
         <ol class="steps">
           <li
             v-for="(step, i) in c.contact.process.steps"
-            :key="step.title"
+            :key="i"
             class="step reveal"
             :style="{ '--reveal-delay': `${i * 90}ms` }"
           >

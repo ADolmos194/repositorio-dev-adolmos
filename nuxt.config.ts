@@ -44,6 +44,8 @@ export default defineNuxtConfig({
         { name: 'twitter:image', content: '/FOTOCV.png' },
       ],
       link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/logo-am.svg' },
+        { rel: 'alternate icon', type: 'image/x-icon', href: '/logo-am.ico' },
         {
           rel: 'preload',
           href: '/fonts/jetbrains-mono-variable.woff2',

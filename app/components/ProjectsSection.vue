@@ -45,7 +45,7 @@ const archLayers = computed(() => [
       <div class="features">
         <div
           v-for="(f, i) in c.projects.features"
-          :key="f"
+          :key="i"
           class="feat reveal"
           :style="{ '--reveal-delay': `${i * 70}ms` }"
         >

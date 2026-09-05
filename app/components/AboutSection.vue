@@ -33,7 +33,7 @@ const { c } = useLocale()
         <div class="competencies">
           <div
             v-for="(h, i) in c.about.highlights"
-            :key="h"
+            :key="i"
             class="comp reveal"
             :style="{ '--reveal-delay': `${i * 60}ms` }"
           >

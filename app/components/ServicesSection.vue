@@ -10,7 +10,7 @@ const { c } = useLocale()
     <div class="services-grid">
       <div
         v-for="(item, i) in c.services.items"
-        :key="item.title"
+        :key="i"
         class="card svc-card reveal"
         :style="{ '--reveal-delay': `${i * 70}ms` }"
       >
