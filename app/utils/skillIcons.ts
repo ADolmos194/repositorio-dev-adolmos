@@ -24,6 +24,7 @@ const map: Record<string, string> = {
   AWS: 'simple-icons:amazonwebservices',
   Git: 'simple-icons:git',
   GitHub: 'simple-icons:github',
+  Vercel: 'simple-icons:vercel',
   Bitbucket: 'simple-icons:bitbucket',
   Jira: 'simple-icons:jira',
   'CI/CD': 'lucide:infinity',

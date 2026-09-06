@@ -21,6 +21,7 @@ const map: Record<string, string> = {
   AWS: '#FF9900',
   Git: '#F05032',
   GitHub: '#E6EDF3',
+  Vercel: '#E6EDF3',
   Bitbucket: '#2684FF',
   Jira: '#5B9BFF',
   VirtualBox: '#607DB8',

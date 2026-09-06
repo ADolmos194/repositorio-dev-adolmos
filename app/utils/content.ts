@@ -13,6 +13,22 @@ export interface SkillGroup {
   tags: { label: string; learn?: boolean }[]
 }
 
+export interface ProjectEntry {
+  status: string
+  heading: string
+  body: string
+  image?: string
+  gallery?: string[]
+  context?: string[]
+  stackGroups: { label: string; items: string[] }[]
+  featuresHeading: string
+  features: string[]
+  repoLabel: string
+  repo: string
+  liveLabel?: string
+  live?: string
+}
+
 export interface LocaleContent {
   nav: { home: string; about: string; services: string; stack: string; experience: string; projects: string; contact: string }
   hero: {
@@ -48,14 +64,8 @@ export interface LocaleContent {
   }
   projects: {
     title: string
-    status: string
-    heading: string
-    body: string
-    stack: string[]
-    featuresHeading: string
-    features: string[]
-    repoLabel: string
-    repo: string
+    viewDetailLabel: string
+    items: ProjectEntry[]
   }
   contact: {
     title: string
@@ -228,21 +238,63 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     projects: {
       title: 'proyectos',
-      status: 'proyecto propio · en desarrollo activo',
-      heading: 'Gestión de Gastos e Ingresos',
-      body: 'Aplicación full-stack para el control de gastos e ingresos, con autenticación segura, control de acceso por roles (RBAC), auditoría completa de cambios e importación masiva desde Excel.',
-      stack: ['Django REST', 'PostgreSQL', 'React', 'AG Grid', 'Tailwind'],
-      featuresHeading: 'Funcionalidades',
-      features: [
-        'Registro y login con verificación de correo + JWT',
-        'Roles, permisos y menús configurables por usuario',
-        'Historial de auditoría: quién y cuándo modificó cada registro',
-        'Modelo base compartido en el backend: cada entidad nueva hereda estado, auditoría y trazabilidad sin repetir código',
-        'Grid de datos editable en línea (AG Grid) con filtros y exportación',
-        'Importación masiva desde Excel con vista previa antes de confirmar',
+      viewDetailLabel: 'Ver detalle',
+      items: [
+        {
+          status: 'proyecto propio · en desarrollo activo',
+          heading: 'Gestión de Gastos e Ingresos',
+          body: 'Aplicación full-stack para el control de gastos e ingresos, con autenticación segura, control de acceso por roles (RBAC), auditoría completa de cambios e importación masiva desde Excel.',
+          context: [
+            'Nace de una necesidad concreta: cuando el control financiero deja de ser cosa de una sola persona, una hoja de Excel ya no alcanza para saber quién cambió qué y cuándo.',
+            'Por eso el RBAC es granular (no solo "admin/usuario") y la auditoría queda al mismo nivel que cualquier otra funcionalidad, no como un agregado posterior.',
+            'El modelo base compartido en el backend fue una decisión temprana: cada entidad nueva hereda estado, auditoría y trazabilidad sin reescribir esa lógica cada vez.',
+          ],
+          stackGroups: [
+            { label: 'Frontend', items: ['React', 'AG Grid', 'Tailwind'] },
+            { label: 'Backend', items: ['Django REST', 'PostgreSQL'] },
+          ],
+          featuresHeading: 'Funcionalidades',
+          features: [
+            'Registro y login con verificación de correo + JWT',
+            'Roles, permisos y menús configurables por usuario',
+            'Historial de auditoría: quién y cuándo modificó cada registro',
+            'Modelo base compartido en el backend: cada entidad nueva hereda estado, auditoría y trazabilidad sin repetir código',
+            'Grid de datos editable en línea (AG Grid) con filtros y exportación',
+            'Importación masiva desde Excel con vista previa antes de confirmar',
+          ],
+          repoLabel: 'Ver código en GitHub',
+          repo: 'https://github.com/ADolmos194/gestion-gastos-ingresos',
+        },
+        {
+          status: 'proyecto propio · en producción',
+          heading: 'Portafolio Personal',
+          image: '/projects/portfolio-preview.jpg',
+          gallery: ['/projects/portfolio-preview.jpg', '/projects/portfolio-services-stack.jpg', '/projects/portfolio-stack-experience.jpg'],
+          body: 'Este mismo sitio: una landing pensada como producto real, no solo una tarjeta de presentación — con soporte bilingüe, temas y una configuración de seguridad HTTP pensada para producción.',
+          context: [
+            'La estética de "terminal elevada" fue una decisión deliberada: nada de ventanas de terminal falsas ni relleno decorativo, solo la identidad de developer expresada con tipografía monoespaciada y micro-interacciones.',
+            'Todo el contenido bilingüe vive en un único objeto tipado (LocaleContent) en vez de una librería de i18n externa — mantiene el bundle liviano y el contenido fácil de auditar en un solo archivo.',
+            'La seguridad se trató como parte del producto, no un extra: headers CSP/HSTS/Permissions-Policy configurados para producción en Vercel, y el header X-Powered-By removido con un plugin de servidor (Nitro) para reducir el fingerprinting.',
+          ],
+          stackGroups: [
+            { label: 'Frontend', items: ['Nuxt', 'Vue 3', 'TypeScript', 'Tailwind'] },
+            { label: 'Infra & Deploy', items: ['Vercel', 'Git', 'GitHub'] },
+          ],
+          featuresHeading: 'Aspectos clave',
+          features: [
+            'Soporte bilingüe ES/EN con un composable de idioma propio',
+            'Modo claro/oscuro persistente con transición animada (View Transitions API)',
+            'Diseño responsive con estética de terminal elevada',
+            'Headers de seguridad HTTP en producción: CSP, HSTS, Permissions-Policy',
+            'Header X-Powered-By removido en un plugin de servidor (Nitro) para reducir fingerprinting',
+            'Despliegue continuo en Vercel desde GitHub',
+          ],
+          repoLabel: 'Ver código en GitHub',
+          repo: 'https://github.com/ADolmos194/repositorio-dev-adolmos',
+          liveLabel: 'Ver sitio en vivo',
+          live: 'https://aylton-martinez.vercel.app/',
+        },
       ],
-      repoLabel: 'Ver código en GitHub',
-      repo: 'https://github.com/ADolmos194/gestion-gastos-ingresos',
     },
     contact: {
       title: 'contacto',
@@ -389,21 +441,63 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     projects: {
       title: 'projects',
-      status: 'personal project · active development',
-      heading: 'Expense & Income Management',
-      body: 'Full-stack app for tracking expenses and income, with secure authentication, role-based access control (RBAC), full change auditing, and bulk import from Excel.',
-      stack: ['Django REST', 'PostgreSQL', 'React', 'AG Grid', 'Tailwind'],
-      featuresHeading: 'Features',
-      features: [
-        'Sign up / login with email verification + JWT',
-        'Configurable roles, permissions and menus per user',
-        'Audit history: who changed what, and when',
-        'Shared base model in the backend: every new entity inherits status, auditing and traceability with zero boilerplate',
-        'Inline-editable data grid (AG Grid) with filters and export',
-        'Bulk import from Excel with a preview step before confirming',
+      viewDetailLabel: 'View detail',
+      items: [
+        {
+          status: 'personal project · active development',
+          heading: 'Expense & Income Management',
+          body: 'Full-stack app for tracking expenses and income, with secure authentication, role-based access control (RBAC), full change auditing, and bulk import from Excel.',
+          context: [
+            "It comes from a real need: once financial control stops being a one-person job, a spreadsheet can no longer tell you who changed what, and when.",
+            'That\'s why RBAC is granular (not just "admin/user") and auditing sits at the same level as any other feature, not bolted on afterward.',
+            'The shared base model in the backend was an early call: every new entity inherits state, auditing and traceability without rewriting that logic each time.',
+          ],
+          stackGroups: [
+            { label: 'Frontend', items: ['React', 'AG Grid', 'Tailwind'] },
+            { label: 'Backend', items: ['Django REST', 'PostgreSQL'] },
+          ],
+          featuresHeading: 'Features',
+          features: [
+            'Sign up / login with email verification + JWT',
+            'Configurable roles, permissions and menus per user',
+            'Audit history: who changed what, and when',
+            'Shared base model in the backend: every new entity inherits status, auditing and traceability with zero boilerplate',
+            'Inline-editable data grid (AG Grid) with filters and export',
+            'Bulk import from Excel with a preview step before confirming',
+          ],
+          repoLabel: 'View code on GitHub',
+          repo: 'https://github.com/ADolmos194/gestion-gastos-ingresos',
+        },
+        {
+          status: 'personal project · in production',
+          heading: 'Personal Portfolio',
+          image: '/projects/portfolio-preview.jpg',
+          gallery: ['/projects/portfolio-preview.jpg', '/projects/portfolio-services-stack.jpg', '/projects/portfolio-stack-experience.jpg'],
+          body: 'This very site: built as a real product, not just a business card — bilingual support, theming, and an HTTP security setup meant for production.',
+          context: [
+            'The "elevated terminal" look was a deliberate call: no fake terminal window, no decorative filler — just the developer identity expressed through monospace type and small interactions.',
+            'All bilingual content lives in a single typed object (LocaleContent) instead of a third-party i18n library — keeps the bundle light and the content auditable from one file.',
+            'Security was treated as part of the product, not an add-on: CSP/HSTS/Permissions-Policy headers configured for production on Vercel, and the X-Powered-By header stripped via a Nitro server plugin to reduce fingerprinting.',
+          ],
+          stackGroups: [
+            { label: 'Frontend', items: ['Nuxt', 'Vue 3', 'TypeScript', 'Tailwind'] },
+            { label: 'Infra & Deploy', items: ['Vercel', 'Git', 'GitHub'] },
+          ],
+          featuresHeading: 'Key aspects',
+          features: [
+            'Bilingual ES/EN support via a custom locale composable',
+            'Persistent light/dark theme with an animated reveal (View Transitions API)',
+            'Responsive design with an elevated terminal aesthetic',
+            'Production HTTP security headers: CSP, HSTS, Permissions-Policy',
+            'X-Powered-By header stripped in a Nitro server plugin to reduce fingerprinting',
+            'Continuous deployment to Vercel from GitHub',
+          ],
+          repoLabel: 'View code on GitHub',
+          repo: 'https://github.com/ADolmos194/repositorio-dev-adolmos',
+          liveLabel: 'View live site',
+          live: 'https://aylton-martinez.vercel.app/',
+        },
       ],
-      repoLabel: 'View code on GitHub',
-      repo: 'https://github.com/ADolmos194/gestion-gastos-ingresos',
     },
     contact: {
       title: 'contact',
