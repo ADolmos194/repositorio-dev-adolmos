@@ -193,8 +193,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       now: 'Actualidad',
       jobs: [
         {
-          when: 'May 2025 — Actualidad',
-          now: true,
+          when: 'May 2025 — Ago 2026',
           role: 'Asistente de aplicaciones y software',
           company: 'Agrovision Perú',
           bullets: [
@@ -396,8 +395,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       now: 'Present',
       jobs: [
         {
-          when: 'May 2025 — Present',
-          now: true,
+          when: 'May 2025 — Aug 2026',
           role: 'Applications & Software Assistant',
           company: 'Agrovision Peru',
           bullets: [
