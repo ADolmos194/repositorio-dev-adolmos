@@ -141,7 +141,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         'Mentalidad de diagnóstico (ex-soporte)',
         'Código mantenible · CI/CD',
       ],
-      downloadCv: 'cv-aylton-martinez.pdf',
+      downloadCv: 'AyltonMesiasMartinez_CV.pdf',
     },
     services: {
       title: 'servicios',
@@ -343,7 +343,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
         'Diagnostic mindset (ex-support)',
         'Maintainable code · CI/CD',
       ],
-      downloadCv: 'cv-aylton-martinez.pdf',
+      downloadCv: 'AyltonMesiasMartinez_CV.pdf',
     },
     services: {
       title: 'services',
