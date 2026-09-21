@@ -396,7 +396,7 @@ export const siteContent: Record<Locale, LocaleContent> = {
       jobs: [
         {
           when: 'May 2025 — Aug 2026',
-          role: 'Applications & Software Assistant',
+          role: 'Applications & Software Support Assistant',
           company: 'Agrovision Peru',
           bullets: [
             'Detected and fixed critical bugs in web (Vue.js) and mobile (Flutter) platforms.',
