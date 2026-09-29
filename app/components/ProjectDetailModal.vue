@@ -81,8 +81,8 @@ onBeforeUnmount(() => {
           <p v-else class="modal-context-fallback">{{ project.body }}</p>
 
           <div class="proj-arch">
-            <div v-for="group in project.stackGroups" :key="group.label" class="card">
-              <h3>{{ group.label }}</h3>
+            <div v-for="group in project.stackGroups" :key="group.label" class="stack-group">
+              <h3 class="stack-group__h">{{ group.label }}</h3>
               <div class="tags">
                 <span v-for="t in group.items" :key="t" class="tag">
                   <Icon class="ico" :name="skillIcon(t)" :style="{ color: skillColor(t) }" />{{ t }}
@@ -101,15 +101,13 @@ onBeforeUnmount(() => {
           </div>
 
           <div class="proj-links">
-            <a class="go-btn go-btn--dl proj-link" :href="project.repo" target="_blank" rel="noopener">
-              <span class="go-btn__k">~$ git clone</span>
-              <span class="go-btn__v">{{ project.repoLabel }}</span>
-              <Icon class="go-btn__ico" name="lucide:external-link" />
+            <a class="link-arrow link-arrow--dl" :href="project.repo" target="_blank" rel="noopener">
+              <span>{{ project.repoLabel }}</span>
+              <Icon class="link-arrow__ico" name="lucide:arrow-up-right" />
             </a>
-            <a v-if="project.live" class="go-btn go-btn--dl proj-link" :href="project.live" target="_blank" rel="noopener">
-              <span class="go-btn__k">~$ open</span>
-              <span class="go-btn__v">{{ project.liveLabel }}</span>
-              <Icon class="go-btn__ico" name="lucide:external-link" />
+            <a v-if="project.live" class="link-arrow link-arrow--dl" :href="project.live" target="_blank" rel="noopener">
+              <span>{{ project.liveLabel }}</span>
+              <Icon class="link-arrow__ico" name="lucide:arrow-up-right" />
             </a>
           </div>
         </div>
@@ -168,7 +166,7 @@ onBeforeUnmount(() => {
 .modal-gallery__dot { width: 7px; height: 7px; border-radius: 50%; border: none; padding: 0; cursor: pointer; background: color-mix(in srgb, white 40%, transparent); }
 .modal-gallery__dot.active { background: var(--accent); }
 .modal-body { padding: 26px; display: grid; gap: 14px; text-align: left; }
-.modal-body h3 { margin: 0; font-family: var(--font-heading); color: var(--white); font-size: 1.3rem; }
+.modal-body h3 { margin: 0; font-family: var(--sans); font-weight: 800; letter-spacing: -0.01em; color: var(--white); font-size: 1.4rem; }
 .modal-body .st { color: var(--accent); font-size: 12.5px; }
 .modal-context p, .modal-context-fallback { margin: 0 0 10px; color: var(--text-dim); font-size: 14px; font-family: var(--sans); line-height: 1.6; }
 .modal-context p:last-child { margin-bottom: 0; }

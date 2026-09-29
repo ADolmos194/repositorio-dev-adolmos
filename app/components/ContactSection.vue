@@ -34,8 +34,11 @@ const channels = [
 </script>
 
 <template>
-  <section id="contact" class="contact" data-accent="blue">
+  <section id="contact" class="contact" data-accent="green">
     <SectionHead n="06" :title="c.contact.title" />
+
+    <p class="contact-cta reveal">{{ c.services.ctaLabel }}</p>
+    <p class="contact-lead reveal" style="--reveal-delay: 80ms">{{ c.contact.availability }}</p>
 
     <div class="cols cols--contact">
       <div class="socials">
@@ -72,23 +75,25 @@ const channels = [
         </ol>
       </aside>
     </div>
-
-    <div class="sys-status">
-      <span class="chip">{{ c.contact.availability }}</span>
-    </div>
   </section>
 </template>
 
 <style scoped>
+.contact-cta {
+  margin: 8px 0 0; font-family: var(--sans); font-weight: 800; font-size: var(--fs-h1);
+  letter-spacing: -0.02em; line-height: 1.05; color: var(--white); max-width: 16ch;
+}
+.contact-lead { margin: 16px 0 56px; font-family: var(--sans); font-size: 16.5px; color: var(--text-dim); }
+
 .loc {
   display: flex; align-items: center; gap: 8px;
-  color: var(--text-mute); font-size: 12.5px; margin: 6px 2px 0;
+  color: var(--text-mute); font-size: 12.5px; margin: 16px 2px 0;
 }
 
-.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.step { display: grid; grid-template-columns: 22px 1fr; gap: 10px; }
-.step__n { color: var(--accent); font-size: 12px; font-weight: 700; padding-top: 1px; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.step { display: grid; grid-template-columns: 26px 1fr; gap: 12px; }
+.step__n { color: var(--accent); font-family: var(--mono); font-size: 12px; padding-top: 2px; }
 .step__body { display: grid; gap: 2px; }
-.step__body b { color: var(--text); font-size: 13px; font-weight: 600; }
-.step__body span { color: var(--text-dim); font-size: 13px; line-height: 1.5; font-family: var(--sans); }
+.step__body b { color: var(--text); font-size: 14.5px; font-weight: 700; font-family: var(--sans); }
+.step__body span { color: var(--text-dim); font-size: 14px; line-height: 1.55; font-family: var(--sans); }
 </style>

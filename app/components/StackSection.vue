@@ -23,7 +23,7 @@ const marqueeSkills = computed(() => {
 </script>
 
 <template>
-  <section id="stack" data-accent="blue">
+  <section id="stack" data-accent="green">
     <SectionHead n="03" :title="c.stack.title" status="MODULES: LOADED" />
 
     <div class="stats">
@@ -40,14 +40,14 @@ const marqueeSkills = computed(() => {
       </div>
     </div>
 
-    <div class="skills">
+    <div class="stack-groups">
       <div
         v-for="(group, i) in c.stack.groups"
         :key="i"
-        class="card reveal"
+        class="stack-group reveal"
         :style="{ '--reveal-delay': `${i * 70}ms` }"
       >
-        <h3>{{ group.title }}</h3>
+        <h3 class="stack-group__h">{{ group.title }}</h3>
         <div class="tags">
           <span
             v-for="tag in group.tags"

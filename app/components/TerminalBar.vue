@@ -16,6 +16,11 @@ const links = computed(() => [
 
 const sectionIds = ['home', 'about', 'services', 'stack', 'experience', 'projects', 'contact']
 const activeId = ref('home')
+const scrolled = ref(false)
+
+function updateScrolled() {
+  scrolled.value = window.scrollY > 8
+}
 
 /* Plain scrollTop math instead of IntersectionObserver: the observer version
    never marked the last section active, because the page can't scroll far
@@ -45,16 +50,19 @@ onMounted(() => {
   // fires once, precisely when it actually stops, so the final state is
   // always correct even after clicking a nav link.
   window.addEventListener('scrollend', updateActive, { passive: true })
+  window.addEventListener('scroll', updateScrolled, { passive: true })
   updateActive()
+  updateScrolled()
 })
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', updateActive)
   window.removeEventListener('scrollend', updateActive)
+  window.removeEventListener('scroll', updateScrolled)
 })
 </script>
 
 <template>
-  <div class="term__bar">
+  <div class="term__bar" :class="{ 'term__bar--scrolled': scrolled }">
     <a href="#home" class="brand"><span class="brand__bracket">&lt;/</span>AM<span class="brand__bracket">&gt;</span></a>
 
     <button
