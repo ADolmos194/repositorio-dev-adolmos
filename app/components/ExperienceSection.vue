@@ -9,7 +9,7 @@ const companies = computed(
 </script>
 
 <template>
-  <section id="experience" data-accent="green">
+  <section id="experience">
     <SectionHead n="04" :title="c.experience.title" status="LOG: VERIFIED" />
 
     <div class="stats">
@@ -26,19 +26,22 @@ const companies = computed(
         :class="{ now: job.now }"
         :style="{ '--reveal-delay': `${i * 100}ms` }"
       >
-        <div class="tl-rail" aria-hidden="true"><span class="tl-node" /></div>
+        <span class="tl-node" aria-hidden="true" />
 
-        <div class="tl-content">
-          <div class="tl-top">
-            <span class="tl-date">{{ job.when }}</span>
+        <div class="tl-card">
+          <div class="tl-card__top">
+            <h3>{{ job.role }}</h3>
+          </div>
+          <div class="tl-co">
+            @ {{ job.company }}
             <span v-if="job.now" class="tl-live">● {{ c.experience.live }}</span>
           </div>
-          <h3 class="tl-role">{{ job.role }}</h3>
-          <div class="tl-co">{{ job.company }}</div>
           <ul class="tl-bullets">
-            <li v-for="(b, bi) in job.bullets" :key="bi">{{ b }}</li>
+            <li v-for="(b, bi) in job.bullets" :key="bi"><span class="pl">[+]</span>{{ b }}</li>
           </ul>
         </div>
+
+        <div class="tl-date">{{ job.when }}</div>
       </article>
     </div>
   </section>

@@ -10,8 +10,8 @@ useHead({
 <template>
   <div>
     <div class="bg-texture" aria-hidden="true" />
-    <ScrollSignature />
-    <CustomCursor />
+    <SiteBoxGrid3D />
+    <SystemHud />
 
     <div class="page">
       <TerminalBar />

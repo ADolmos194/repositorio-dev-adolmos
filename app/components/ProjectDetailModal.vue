@@ -101,13 +101,15 @@ onBeforeUnmount(() => {
           </div>
 
           <div class="proj-links">
-            <a class="link-arrow link-arrow--dl" :href="project.repo" target="_blank" rel="noopener">
-              <span>{{ project.repoLabel }}</span>
-              <Icon class="link-arrow__ico" name="lucide:arrow-up-right" />
+            <a class="cmd-link cmd-link--dl" :href="project.repo" target="_blank" rel="noopener">
+              <span class="cmd-link__k">~$ git clone</span>
+              <span class="cmd-link__v">{{ project.repoLabel }}</span>
+              <Icon class="cmd-link__ico" name="lucide:external-link" />
             </a>
-            <a v-if="project.live" class="link-arrow link-arrow--dl" :href="project.live" target="_blank" rel="noopener">
-              <span>{{ project.liveLabel }}</span>
-              <Icon class="link-arrow__ico" name="lucide:arrow-up-right" />
+            <a v-if="project.live" class="cmd-link cmd-link--dl" :href="project.live" target="_blank" rel="noopener">
+              <span class="cmd-link__k">~$ open</span>
+              <span class="cmd-link__v">{{ project.liveLabel }}</span>
+              <Icon class="cmd-link__ico" name="lucide:external-link" />
             </a>
           </div>
         </div>
@@ -129,7 +131,7 @@ onBeforeUnmount(() => {
   position: relative;
   width: min(720px, 100%);
   max-height: 88vh; overflow: hidden;
-  border: 1px solid var(--line); border-radius: 12px;
+  border: 1px solid var(--line); border-radius: 0;
   background: var(--surface-2);
   box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
 }
@@ -142,7 +144,7 @@ onBeforeUnmount(() => {
   color: var(--text-dim); cursor: pointer; transition: color .18s, border-color .18s;
 }
 .modal-close:hover { color: var(--accent); border-color: var(--accent-dim); }
-.modal-gallery { position: relative; border-radius: 12px 12px 0 0; overflow: hidden; }
+.modal-gallery { position: relative; border-radius: 0; overflow: hidden; }
 .modal-gallery__track {
   display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -166,9 +168,9 @@ onBeforeUnmount(() => {
 .modal-gallery__dot { width: 7px; height: 7px; border-radius: 50%; border: none; padding: 0; cursor: pointer; background: color-mix(in srgb, white 40%, transparent); }
 .modal-gallery__dot.active { background: var(--accent); }
 .modal-body { padding: 26px; display: grid; gap: 14px; text-align: left; }
-.modal-body h3 { margin: 0; font-family: var(--sans); font-weight: 800; letter-spacing: -0.01em; color: var(--white); font-size: 1.4rem; }
+.modal-body h3 { margin: 0; font-family: var(--sans); font-weight: 800; letter-spacing: -.015em; color: var(--white); font-size: 1.6rem; }
 .modal-body .st { color: var(--accent); font-size: 12.5px; }
-.modal-context p, .modal-context-fallback { margin: 0 0 10px; color: var(--text-dim); font-size: 14px; font-family: var(--sans); line-height: 1.6; }
+.modal-context p, .modal-context-fallback { margin: 0 0 10px; color: var(--text-dim); font-size: 14px; font-family: var(--sans); line-height: 1.6; text-align: justify; }
 .modal-context p:last-child { margin-bottom: 0; }
 .proj-arch {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

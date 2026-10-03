@@ -3,7 +3,7 @@ const { c } = useLocale()
 </script>
 
 <template>
-  <section id="about" class="about" data-accent="green">
+  <section id="about" class="about">
     <SectionHead n="01" :title="c.about.title" status="IDENTITY: OK" />
 
     <div class="about-grid">
@@ -13,19 +13,25 @@ const { c } = useLocale()
         </div>
         <div class="idcard__avatar">
           <img src="/FOTOCV.png" alt="Aylton Martinez">
+          <span class="idcard__corner idcard__corner--tl" aria-hidden="true" />
+          <span class="idcard__corner idcard__corner--tr" aria-hidden="true" />
+          <span class="idcard__corner idcard__corner--bl" aria-hidden="true" />
+          <span class="idcard__corner idcard__corner--br" aria-hidden="true" />
+          <span class="idcard__scan" aria-hidden="true" />
         </div>
       </aside>
 
       <div>
-        <!-- eslint-disable-next-line vue/no-v-html -->
         <div
           v-for="(para, i) in c.about.paragraphs"
           :key="i"
           class="bio-p reveal"
-          :class="{ 'bio-p--lead': i === 0 }"
           :style="{ '--reveal-delay': `${i * 90}ms` }"
-          v-html="para"
-        />
+        >
+          <span class="pr">&gt;</span>
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <span v-html="para" />
+        </div>
 
         <div class="competencies-h reveal">CORE_COMPETENCIES</div>
         <div class="competencies">

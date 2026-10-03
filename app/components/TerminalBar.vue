@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { locale, c, set } = useLocale()
 const { theme, toggle } = useTheme()
+const { activeId } = useActiveSection()
 
 const open = ref(false)
 
@@ -14,56 +15,36 @@ const links = computed(() => [
   { id: 'contact', label: c.value.nav.contact },
 ])
 
-const sectionIds = ['home', 'about', 'services', 'stack', 'experience', 'projects', 'contact']
-const activeId = ref('home')
+// must start false to match the server render (SSR has no window/scroll),
+// or hydration sees a class mismatch whenever the page loads scrolled
+// down (a refresh mid-scroll, or scroll restoration). The bar has no
+// transition on this property (see main.css) specifically so flipping it
+// a tick later in onMounted is still an instant, single-frame swap — no
+// room for it to visibly "shake" regardless of scroll-restoration or
+// font-load timing.
 const scrolled = ref(false)
 
 function updateScrolled() {
   scrolled.value = window.scrollY > 8
 }
 
-/* Plain scrollTop math instead of IntersectionObserver: the observer version
-   never marked the last section active, because the page can't scroll far
-   enough for "contact" to cross the activation line — it hits the bottom of
-   the scroll range first, so the second-to-last section stayed lit forever. */
-function updateActive() {
-  const doc = document.documentElement
-  const activationLine = window.innerHeight * 0.25
-
-  let current = sectionIds[0]
-  for (const id of sectionIds) {
-    const el = document.getElementById(id)
-    if (el && el.getBoundingClientRect().top <= activationLine) current = id
-  }
-  // pinned to the floor of the page → force the last section, regardless
-  // of where the activation line landed
-  if (doc.scrollTop + window.innerHeight >= doc.scrollHeight - 16) {
-    current = sectionIds[sectionIds.length - 1]
-  }
-  activeId.value = current
-}
-
 onMounted(() => {
-  window.addEventListener('scroll', updateActive, { passive: true })
-  // 'scroll' fires throughout a smooth-scroll animation but the tick that
-  // lands exactly on the resting position isn't guaranteed — 'scrollend'
-  // fires once, precisely when it actually stops, so the final state is
-  // always correct even after clicking a nav link.
-  window.addEventListener('scrollend', updateActive, { passive: true })
   window.addEventListener('scroll', updateScrolled, { passive: true })
-  updateActive()
   updateScrolled()
 })
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', updateActive)
-  window.removeEventListener('scrollend', updateActive)
   window.removeEventListener('scroll', updateScrolled)
 })
+
+function onHomeClick(e: MouseEvent) {
+  open.value = false
+  goHome(e)
+}
 </script>
 
 <template>
   <div class="term__bar" :class="{ 'term__bar--scrolled': scrolled }">
-    <a href="#home" class="brand"><span class="brand__bracket">&lt;/</span>AM<span class="brand__bracket">&gt;</span></a>
+    <a href="#home" class="brand" @click="onHomeClick"><span class="brand__bracket">&lt;/</span>AM<span class="brand__bracket">&gt;</span></a>
 
     <button
       class="term__burger"
@@ -80,7 +61,7 @@ onBeforeUnmount(() => {
         :key="l.id"
         :href="`#${l.id}`"
         :class="{ active: activeId === l.id }"
-        @click="open = false"
+        @click="l.id === 'home' ? onHomeClick($event) : (open = false)"
       >{{ l.label }}</a>
 
       <span class="seg" role="group" aria-label="Idioma / Language">
@@ -117,6 +98,6 @@ onBeforeUnmount(() => {
   transition: color .18s, border-color .18s;
 }
 .term__burger:hover, .term__burger[aria-expanded="true"] {
-  color: var(--green); border-color: var(--green-dim);
+  color: var(--accent); border-color: var(--accent-dim);
 }
 </style>

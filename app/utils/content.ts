@@ -41,8 +41,11 @@ export interface LocaleContent {
     role: string
     location: string
     education: string
+    educationLabel: string
     experience: string
+    experienceLabel: string
     languages: string
+    languagesLabel: string
     focus: string
     availability: string
   }
@@ -69,9 +72,11 @@ export interface LocaleContent {
   }
   contact: {
     title: string
+    readyHeadline: string
     availability: string
     cta: string
     location: string
+    phoneLabel: string
     process: { heading: string; steps: { title: string; detail: string }[] }
   }
   footer: { built: string; status: string }
@@ -123,8 +128,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
       role: 'Full Stack Developer',
       location: 'Trujillo, La Libertad · Perú',
       education: 'Ing. de Sistemas · UCV',
+      educationLabel: 'Formación',
       experience: 'Desde 2019 en TI',
+      experienceLabel: 'Experiencia',
       languages: 'ES nativo · EN A2',
+      languagesLabel: 'Idiomas',
       focus: 'Vue · Nuxt · Django · Flutter',
       availability: 'Disponible: freelance y full-time',
     },
@@ -132,8 +140,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
       title: 'sobre_mí',
       paragraphs: [
         'Desarrollador <span class="hl">Full Stack</span> con base en Trujillo. Me hago cargo de tu proyecto completo: del modelo de datos en <span class="hlb">PostgreSQL</span> y las APIs en <span class="hlb">Django REST</span>, hasta interfaces en <span class="hlb">Vue 3 / Nuxt / React</span> y apps en <span class="hlb">Flutter</span>.',
-        'Vengo de una ruta poco común: empecé en <span class="hl">soporte técnico y hardware</span>, y esa mentalidad de diagnóstico la traigo al software — encontrar el bug crítico, estabilizar el sistema y dejar el código mantenible con <span class="hlb">Conventional Commits</span> y CI/CD.',
-        'Si tu equipo necesita a alguien que resuelva bugs críticos en producción rápido, <span class="hl">y</span> también construya features nuevas sin necesitar supervisión constante, ese soy yo — disponible tanto para proyectos freelance como para un rol full-time.',
+        'Vengo de una ruta poco común: empecé en <span class="hl">soporte técnico y hardware</span>, y esa mentalidad de diagnóstico la traigo al software: encontrar el bug crítico, estabilizar el sistema y dejar el código mantenible con <span class="hlb">Conventional Commits</span> y CI/CD.',
+        'Si tu equipo necesita a alguien que resuelva bugs críticos en producción rápido, <span class="hl">y</span> también construya features nuevas sin necesitar supervisión constante, ese soy yo: disponible tanto para proyectos freelance como para un rol full-time.',
       ],
       highlights: [
         'Un solo dev, todo el stack cubierto',
@@ -269,10 +277,10 @@ export const siteContent: Record<Locale, LocaleContent> = {
           heading: 'Portafolio Personal',
           image: '/projects/portfolio-preview.jpg',
           gallery: ['/projects/portfolio-preview.jpg', '/projects/portfolio-services-stack.jpg', '/projects/portfolio-stack-experience.jpg'],
-          body: 'Este mismo sitio: una landing pensada como producto real, no solo una tarjeta de presentación — con soporte bilingüe, temas y una configuración de seguridad HTTP pensada para producción.',
+          body: 'Este mismo sitio: una landing pensada como producto real, no solo una tarjeta de presentación, con soporte bilingüe, temas y una configuración de seguridad HTTP pensada para producción.',
           context: [
             'La estética de "terminal elevada" fue una decisión deliberada: nada de ventanas de terminal falsas ni relleno decorativo, solo la identidad de developer expresada con tipografía monoespaciada y micro-interacciones.',
-            'Todo el contenido bilingüe vive en un único objeto tipado (LocaleContent) en vez de una librería de i18n externa — mantiene el bundle liviano y el contenido fácil de auditar en un solo archivo.',
+            'Todo el contenido bilingüe vive en un único objeto tipado (LocaleContent) en vez de una librería de i18n externa, lo que mantiene el bundle liviano y el contenido fácil de auditar en un solo archivo.',
             'La seguridad se trató como parte del producto, no un extra: headers CSP/HSTS/Permissions-Policy configurados para producción en Vercel, y el header X-Powered-By removido con un plugin de servidor (Nitro) para reducir el fingerprinting.',
           ],
           stackGroups: [
@@ -297,9 +305,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     contact: {
       title: 'contacto',
+      readyHeadline: '¿Conectamos?',
       availability: 'Disponible para nuevos proyectos y oportunidades',
       cta: 'Escríbeme',
       location: 'Trujillo, Perú · GMT-5',
+      phoneLabel: 'Teléfono',
       process: {
         heading: 'Cómo trabajamos',
         steps: [
@@ -325,8 +335,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
       role: 'Full Stack Developer',
       location: 'Trujillo, La Libertad · Peru',
       education: 'Systems Engineering · UCV',
+      educationLabel: 'Education',
       experience: 'In IT since 2019',
+      experienceLabel: 'Experience',
       languages: 'ES native · EN A2',
+      languagesLabel: 'Languages',
       focus: 'Vue · Nuxt · Django · Flutter',
       availability: 'Available: freelance & full-time',
     },
@@ -334,8 +347,8 @@ export const siteContent: Record<Locale, LocaleContent> = {
       title: 'about_me',
       paragraphs: [
         '<span class="hl">Full Stack</span> developer based in Trujillo, Peru. I take full ownership of your project: from the data model in <span class="hlb">PostgreSQL</span> and the APIs in <span class="hlb">Django REST</span>, to interfaces in <span class="hlb">Vue 3 / Nuxt / React</span> and apps in <span class="hlb">Flutter</span>.',
-        'I come from an unusual path: I started in <span class="hl">technical support and hardware</span>, and I bring that diagnostic mindset to software — finding the critical bug, stabilizing the system, and keeping the code maintainable with <span class="hlb">Conventional Commits</span> and CI/CD.',
-        'If your team needs someone who can fix critical production bugs fast <span class="hl">and</span> ship new features without needing much hand-holding, that\'s me — open to freelance projects and full-time roles alike.',
+        'I come from an unusual path: I started in <span class="hl">technical support and hardware</span>, and I bring that diagnostic mindset to software: finding the critical bug, stabilizing the system, and keeping the code maintainable with <span class="hlb">Conventional Commits</span> and CI/CD.',
+        'If your team needs someone who can fix critical production bugs fast <span class="hl">and</span> ship new features without needing much hand-holding, that\'s me: open to freelance projects and full-time roles alike.',
       ],
       highlights: [
         'One dev, the whole stack covered',
@@ -471,10 +484,10 @@ export const siteContent: Record<Locale, LocaleContent> = {
           heading: 'Personal Portfolio',
           image: '/projects/portfolio-preview.jpg',
           gallery: ['/projects/portfolio-preview.jpg', '/projects/portfolio-services-stack.jpg', '/projects/portfolio-stack-experience.jpg'],
-          body: 'This very site: built as a real product, not just a business card — bilingual support, theming, and an HTTP security setup meant for production.',
+          body: 'This very site: built as a real product, not just a business card, with bilingual support, theming, and an HTTP security setup meant for production.',
           context: [
-            'The "elevated terminal" look was a deliberate call: no fake terminal window, no decorative filler — just the developer identity expressed through monospace type and small interactions.',
-            'All bilingual content lives in a single typed object (LocaleContent) instead of a third-party i18n library — keeps the bundle light and the content auditable from one file.',
+            'The "elevated terminal" look was a deliberate call: no fake terminal window, no decorative filler, just the developer identity expressed through monospace type and small interactions.',
+            'All bilingual content lives in a single typed object (LocaleContent) instead of a third-party i18n library, which keeps the bundle light and the content auditable from one file.',
             'Security was treated as part of the product, not an add-on: CSP/HSTS/Permissions-Policy headers configured for production on Vercel, and the X-Powered-By header stripped via a Nitro server plugin to reduce fingerprinting.',
           ],
           stackGroups: [
@@ -499,9 +512,11 @@ export const siteContent: Record<Locale, LocaleContent> = {
     },
     contact: {
       title: 'contact',
+      readyHeadline: 'Ready to connect?',
       availability: 'Available for new projects and opportunities',
       cta: 'Write to me',
       location: 'Trujillo, Peru · GMT-5',
+      phoneLabel: 'Phone',
       process: {
         heading: 'How we’d work together',
         steps: [

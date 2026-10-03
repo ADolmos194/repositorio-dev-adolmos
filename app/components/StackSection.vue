@@ -20,11 +20,20 @@ const marqueeSkills = computed(() => {
   }
   return list
 })
+
+const hoveredLabel = ref('')
+function moduleName(label: string) {
+  return label.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/(^_|_$)/g, '')
+}
 </script>
 
 <template>
-  <section id="stack" data-accent="green">
+  <section id="stack">
     <SectionHead n="03" :title="c.stack.title" status="MODULES: LOADED" />
+
+    <div class="stack-caption" :class="{ 'is-visible': hoveredLabel }" aria-hidden="true">
+      <span class="pr">&gt;</span> module.loaded("{{ moduleName(hoveredLabel) }}")
+    </div>
 
     <div class="stats">
       <div class="stat"><b>{{ totalTags }}</b><span>{{ c.stack.stats.total }}</span></div>
@@ -54,6 +63,8 @@ const marqueeSkills = computed(() => {
             :key="tag.label"
             class="tag"
             :class="{ learn: tag.learn }"
+            @mouseenter="hoveredLabel = tag.label"
+            @mouseleave="hoveredLabel = ''"
           >
             <Icon class="ico" :name="skillIcon(tag.label)" :style="{ color: skillColor(tag.label) }" />
             {{ tag.label }}

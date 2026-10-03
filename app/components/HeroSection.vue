@@ -3,11 +3,11 @@ const { c } = useLocale()
 
 const typed = ref('')
 let timer: ReturnType<typeof setTimeout> | null = null
-const reducedMotion = import.meta.client && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 function runTypewriter(text: string) {
   if (timer) clearTimeout(timer)
-  if (reducedMotion) {
+  const reduce = import.meta.client && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduce) {
     typed.value = text
     return
   }
@@ -30,13 +30,13 @@ onBeforeUnmount(() => {
 
 const heroStack = ['Vue 3', 'Nuxt', 'Django', 'Flutter']
 
-/* role, location and stack are already stated in the eyebrow and the
-   index list below — this panel only adds facts not shown elsewhere
-   in the hero, so nothing repeats within the same view. */
+/* role and location are already stated in the eyebrow — this panel only
+   adds facts not shown elsewhere in the hero, so nothing repeats within
+   the same view. */
 const facts = computed(() => [
-  { icon: 'lucide:graduation-cap', value: c.value.facts.education },
-  { icon: 'lucide:briefcase', value: c.value.facts.experience },
-  { icon: 'lucide:languages', value: c.value.facts.languages },
+  { icon: 'lucide:graduation-cap', label: c.value.facts.educationLabel, value: c.value.facts.education },
+  { icon: 'lucide:briefcase', label: c.value.facts.experienceLabel, value: c.value.facts.experience },
+  { icon: 'lucide:languages', label: c.value.facts.languagesLabel, value: c.value.facts.languages },
 ])
 
 /* side panel eases back slightly as you start reading — a light "cover →
@@ -51,7 +51,8 @@ function onScroll() {
   }
 }
 onMounted(() => {
-  if (reducedMotion) return
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduce) return
   window.addEventListener('scroll', onScroll, { passive: true })
   onScroll()
 })
@@ -59,7 +60,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 </script>
 
 <template>
-  <header id="home" class="hero" data-accent="green">
+  <header id="home" class="hero">
     <div class="hero-grid">
       <div class="hero-main">
         <div class="eyebrow"><span class="eyebrow__dot" />{{ c.hero.roleLead }} Full Stack &mdash; {{ c.facts.location }}</div>
@@ -69,39 +70,44 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
         <p class="hero-type">{{ typed }}<span class="cursor"></span></p>
 
         <div class="hero-cta">
-          <a href="/AyltonMesiasMartinez_CV.pdf" class="link-arrow link-arrow--primary link-arrow--dl" download="cv-aylton-martinez.pdf">
-            <span>{{ c.about.downloadCv }}</span>
-            <Icon class="link-arrow__ico" name="lucide:arrow-down" />
+          <a href="/AyltonMesiasMartinez_CV.pdf" class="cmd-link cmd-link--primary" download="cv-aylton-martinez.pdf">
+            <span class="cmd-link__k">~$ wget</span>
+            <span class="cmd-link__v">{{ c.about.downloadCv }}</span>
+            <Icon class="cmd-link__ico" name="lucide:download" />
           </a>
-          <a href="#experience" class="link-arrow">
-            <span>{{ c.nav.experience }}</span>
-            <Icon class="link-arrow__ico" name="lucide:arrow-up-right" />
+          <a href="#experience" class="cmd-link cmd-link--back">
+            <span class="cmd-link__k">~$ cd</span>
+            <span class="cmd-link__v">./{{ c.nav.experience }}</span>
+            <Icon class="cmd-link__ico" name="lucide:arrow-left" />
           </a>
-          <a href="#contact" class="link-arrow">
-            <span>{{ c.nav.contact }}</span>
-            <Icon class="link-arrow__ico" name="lucide:arrow-up-right" />
+          <a href="#contact" class="cmd-link cmd-link--back">
+            <span class="cmd-link__k">~$ cd</span>
+            <span class="cmd-link__v">./{{ c.nav.contact }}</span>
+            <Icon class="cmd-link__ico" name="lucide:arrow-left" />
           </a>
         </div>
         <p class="hero-hint">{{ c.hero.ctaHint }}</p>
+
+        <div class="hero-stack">
+          <span v-for="tech in heroStack" :key="tech" class="hero-stack__item">
+            <Icon class="ico" :name="skillIcon(tech)" :style="{ color: skillColor(tech) }" />{{ tech }}
+          </span>
+        </div>
       </div>
 
       <aside class="hero-side" :style="heroSideStyle">
-        <ol class="hero-index">
-          <li v-for="(tech, i) in heroStack" :key="tech">
-            <span class="hero-index__n">{{ String(i + 1).padStart(2, '0') }}</span>
-            <Icon class="hero-index__ico" :name="skillIcon(tech)" :style="{ color: skillColor(tech) }" />
-            <span class="hero-index__v">{{ tech }}</span>
-          </li>
-        </ol>
-
         <div class="panel hero-panel reveal">
-          <div class="panel__title">{{ c.facts.heading }}</div>
+          <div class="panel__title">// {{ c.facts.heading }}</div>
           <div class="fact-list">
             <div v-for="f in facts" :key="f.icon" class="fact">
-              <Icon class="ico" :name="f.icon" /><span class="v">{{ f.value }}</span>
+              <span class="fact__ico"><Icon :name="f.icon" /></span>
+              <span class="fact__body">
+                <span class="fact__label">{{ f.label }}</span>
+                <span class="v">{{ f.value }}</span>
+              </span>
             </div>
           </div>
-          <span class="badge"><span class="dot" />{{ c.facts.availability }}</span>
+          <span class="badge"><Icon class="badge__pulse" name="lucide:zap" />{{ c.facts.availability }}</span>
         </div>
       </aside>
     </div>
