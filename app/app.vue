@@ -1,24 +1,16 @@
 <script setup lang="ts">
-const { init } = useTheme()
-onMounted(init)
-
 useHead({
-  noscript: [{ innerHTML: '<style>.reveal{opacity:1!important;transform:none!important}</style>' }],
+  htmlAttrs: { class: 'dark' },
+  // apply the saved theme before first paint, so there is no flash of the wrong one
+  script: [{ innerHTML: "try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=t==='light'?'light':'dark'}catch(e){}" }],
 })
+
+const { init: initTheme } = useTheme()
+const { init: initLocale } = useLocale()
+onMounted(() => { initTheme(); initLocale() })
 </script>
 
 <template>
-  <div>
-    <div class="bg-texture" aria-hidden="true" />
-    <SiteBoxGrid3D />
-    <SystemHud />
-
-    <div class="page">
-      <TerminalBar />
-      <main class="site-main">
-        <NuxtPage />
-      </main>
-      <SiteFooter />
-    </div>
-  </div>
+  <SiteBoxGrid3D />
+  <NuxtPage />
 </template>

@@ -1,20 +1,20 @@
-import { siteContent, type Locale, type LocaleContent } from '~/utils/content'
+/** ES / EN. The texts live in `~/i18n/messages` (generated); templates call `$t(id)`. */
+export type LocaleName = 'es' | 'en'
 
-/**
- * Bilingual state (ES/EN) shared across the app.
- * `c` is the reactive content bundle for the active locale.
- */
 export function useLocale() {
-  const locale = useState<Locale>('locale', () => 'es')
+  const locale = useState<LocaleName>('locale', () => 'es')
 
-  const c = computed<LocaleContent>(() => siteContent[locale.value])
-
-  function set(next: Locale) {
+  function set(next: LocaleName) {
     locale.value = next
-    if (import.meta.client) {
-      document.documentElement.setAttribute('lang', next)
-    }
+    document.documentElement.lang = next
+    try { localStorage.setItem('locale', next) } catch { /* private mode */ }
   }
 
-  return { locale, c, set }
+  function init() {
+    let saved: string | null = null
+    try { saved = localStorage.getItem('locale') } catch { /* private mode */ }
+    set(saved === 'en' || saved === 'es' ? saved : (navigator.language?.toLowerCase().startsWith('en') ? 'en' : 'es'))
+  }
+
+  return { locale, set, init }
 }

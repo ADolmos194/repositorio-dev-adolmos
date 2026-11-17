@@ -1,76 +1,40 @@
-export type Theme = 'dark' | 'light'
-
 /**
- * Dark / light theme with a persisted preference and an expanding-wave
- * (ripple) reveal on toggle, using the View Transitions API.
+ * Dark / light theme. The light theme is the dark design inverted (see main.css), so switching is one
+ * attribute on <html>. The change plays as a circular wave from the clicked button (View Transitions API),
+ * falling back to an instant switch when it is unavailable or the user prefers reduced motion.
  */
+export type ThemeName = 'dark' | 'light'
+
 export function useTheme() {
-  const theme = useState<Theme>('theme', () => 'dark')
+  const theme = useState<ThemeName>('theme', () => 'dark')
 
-  function apply(next: Theme) {
+  function apply(next: ThemeName) {
     theme.value = next
-    if (import.meta.client) {
-      document.documentElement.setAttribute('data-theme', next)
-      try {
-        localStorage.setItem('theme', next)
-      } catch {
-        /* storage may be unavailable */
-      }
-    }
-  }
-
-  function toggle(event?: MouseEvent) {
-    const next: Theme = theme.value === 'dark' ? 'light' : 'dark'
-
-    const reduce =
-      import.meta.client && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    const supported = import.meta.client && typeof document.startViewTransition === 'function'
-
-    if (!supported || reduce) {
-      apply(next)
-      return
-    }
-
-    // origin of the wave = click point (fallback to top-right)
-    const x = event?.clientX ?? window.innerWidth - 40
-    const y = event?.clientY ?? 40
-    const endRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y),
-    )
-
-    const transition = document.startViewTransition(() => apply(next))
-
-    transition.ready.then(() => {
-      document.documentElement.animate(
-        {
-          clipPath: [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${endRadius}px at ${x}px ${y}px)`,
-          ],
-        },
-        {
-          duration: 520,
-          easing: 'ease-in-out',
-          pseudoElement: '::view-transition-new(root)',
-        },
-      )
-    })
+    document.documentElement.dataset.theme = next
+    try { localStorage.setItem('theme', next) } catch { /* private mode */ }
   }
 
   function init() {
-    if (!import.meta.client) return
-    let stored: Theme | null = null
-    try {
-      stored = localStorage.getItem('theme') as Theme | null
-    } catch {
-      /* ignore */
-    }
-    // dark is the site's default regardless of OS preference — only an
-    // explicit toggle (saved above) should ever switch it to light
-    apply(stored ?? 'dark')
+    let saved: string | null = null
+    try { saved = localStorage.getItem('theme') } catch { /* private mode */ }
+    apply(saved === 'light' ? 'light' : 'dark')
   }
 
-  return { theme, toggle, init }
+  async function toggle(e?: MouseEvent) {
+    const next: ThemeName = theme.value === 'dark' ? 'light' : 'dark'
+    const doc = document as Document & { startViewTransition?: (cb: () => void) => { ready: Promise<void> } }
+    if (!doc.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) return apply(next)
+
+    const x = e?.clientX ?? innerWidth / 2
+    const y = e?.clientY ?? 0
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
+    const transition = doc.startViewTransition(() => apply(next))
+    await transition.ready
+    document.documentElement.animate(
+      { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+      { duration: 800, easing: 'cubic-bezier(.4, 0, .2, 1)', pseudoElement: '::view-transition-new(root)' },
+    )
+  }
+
+  return { theme, init, toggle }
 }
