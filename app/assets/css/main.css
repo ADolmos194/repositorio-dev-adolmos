@@ -170,7 +170,7 @@
   --c-crimson-bright: #d4a64a;
   --c-crimson-dark: #2a210c;
   --c-pixel-amber: #f59e0b;
-  --c-pixel-green: #34d399;
+  --c-pixel-green: #4ade80;
   --c-on-surface: #e4e4e7;
   --c-secondary: #a1a1aa;
   --c-tactical-zinc: #71717a;
@@ -278,14 +278,11 @@ html[data-theme="light"] img, html[data-theme="light"] video { filter: invert(1)
 ::view-transition-old(root) { z-index: 1; }
 ::view-transition-new(root) { z-index: 2147483646; }
 
-/* CRT texture shared by every page: faint grid + 4% scanlines */
+/* CRT texture shared by every page: 4% scanlines (no grid — the circuit background supplies that) */
 .arcade-skin {
-  background-color: transparent; /* the cube background (SiteBoxGrid3D) shows through; the page color is on <body> */
-  background-image:
-    repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 2px, rgba(0,0,0,0.25) 2px, rgba(0,0,0,0.25) 4px),
-    linear-gradient(to right, rgba(212, 166, 74,0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(212, 166, 74,0.04) 1px, transparent 1px);
-  background-size: 100% 4px, 24px 24px, 24px 24px;
+  background-color: transparent; /* the circuit board background (SiteCircuitGrid3D) shows through; the page color is on <body> */
+  background-image: repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 2px, rgba(0,0,0,0.25) 2px, rgba(0,0,0,0.25) 4px);
+  background-size: 100% 4px;
 }
 /* Same page frame everywhere: same top offset under the header, same texture, same content edge as the header */
 [class*="page-"] main { padding-top: 64px !important; background: transparent !important; }
@@ -515,4 +512,8 @@ html[data-theme="light"] img, html[data-theme="light"] video { filter: invert(1)
   line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block;
   white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-smoothing: antialiased;
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+/* Solid/filled variant for icons on a busy or bright background that need more visual weight. */
+.material-symbols-outlined.icon-filled {
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
 }

@@ -9,11 +9,11 @@
             const filter = btn.getAttribute('data-filter');
 
             filterButtons.forEach(b => {
-              b.classList.remove('bg-crimson-pulse', 'text-white', 'border-white', 'shadow-[0_0_10px_#dc2626]');
+              b.classList.remove('bg-arcade-black', 'text-crimson-bright', 'border-crimson-bright');
               b.classList.add('bg-arcade-panel', 'text-secondary', 'border-arcade-border');
             });
             btn.classList.remove('bg-arcade-panel', 'text-secondary', 'border-arcade-border');
-            btn.classList.add('bg-crimson-pulse', 'text-white', 'border-white', 'shadow-[0_0_10px_#dc2626]');
+            btn.classList.add('bg-arcade-black', 'text-crimson-bright', 'border-crimson-bright');
 
             cards.forEach(card => {
               const categories = card.getAttribute('data-category') || '';

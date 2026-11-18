@@ -13,8 +13,8 @@ useStitchScript(code)
 <!-- Dossier Header Arcade Intro Section -->
 <PageHero :eyebrow="$t(96)" :title="$t(97)" :lead="$t(98)"><div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-arcade-dark p-3 border-2 border-arcade-border">
 <div class="flex flex-wrap items-center gap-2" id="filter-group">
-<button class="filter-btn px-3 py-2 bg-crimson-pulse text-black font-arcade text-[10px] uppercase border-2 border-white flex items-center gap-2 transition-colors" data-filter="all">
-<span class="w-2 h-2 bg-white"></span>
+<button class="filter-btn px-3 py-2 bg-arcade-black text-crimson-bright font-arcade text-[10px] uppercase border-2 border-crimson-bright flex items-center gap-2 transition-colors" data-filter="all">
+<span class="w-2 h-2 bg-crimson-bright"></span>
 <span>{{ $t(99) }}</span>
 </button>
 <button class="filter-btn px-3 py-2 bg-arcade-panel text-secondary hover:text-white hover:border-crimson-bright border-2 border-arcade-border font-arcade text-[10px] uppercase transition-colors" data-filter="fullstack">
@@ -33,7 +33,7 @@ useStitchScript(code)
 <section class="w-full px-4 sm:px-6 lg:px-8 py-2">
 <div class="max-w-7xl mx-auto flex flex-col gap-10">
 <!-- MISSION 01: STAGE 01 - THE TRANSACTIONAL VAULT -->
-<article class="project-card flex flex-col bg-arcade-dark border-2 border-arcade-border hover:border-crimson-pulse transition-colors duration-200" data-category="fullstack">
+<article class="project-card flex flex-col bg-arcade-dark border-2 border-arcade-border hover:border-crimson-pulse hover:rotate-0 transition-all duration-300 -rotate-1" data-category="fullstack">
 <!-- Mission Header Banner -->
 <div class="flex flex-wrap items-center justify-between gap-2 p-3 bg-arcade-panel border-b-2 border-arcade-border">
 <div class="flex items-center gap-3">
@@ -58,7 +58,7 @@ useStitchScript(code)
                 </p>
 </div>
 <!-- 8-Bit Pixel Stack Badges -->
-<div class="flex flex-wrap gap-2 pt-1 font-arcade text-[10px]">
+<div class="flex flex-wrap gap-2 pt-1 font-arcade text-[10px] rotate-1">
 <span class="px-2 py-1 bg-arcade-black border-2 border-arcade-border text-white hover:border-crimson-bright transition-colors">{{ $t(108) }}</span>
 <span class="px-2 py-1 bg-crimson-dark border-2 border-crimson-pulse text-crimson-bright font-semibold">{{ $t(109) }}</span>
 <span class="px-2 py-1 bg-arcade-black border-2 border-arcade-border text-white">{{ $t(110) }}</span>
@@ -67,28 +67,28 @@ useStitchScript(code)
 </div>
 <!-- Boss Defenses Grid -->
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col">
+<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col -rotate-1">
 <span class="font-arcade text-[10px] text-crimson-bright flex items-center gap-2">
 <span class="w-1.5 h-1.5 bg-crimson-bright"></span>{{ $t(113) }}
                   </span>
 <span class="font-mono font-semibold text-white text-sm mt-1">{{ $t(114) }}</span>
 <span class="font-mono text-xs text-tactical-zinc mt-0.5">{{ $t(115) }}</span>
 </div>
-<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col">
+<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col rotate-1">
 <span class="font-arcade text-[10px] text-crimson-bright flex items-center gap-2">
 <span class="w-1.5 h-1.5 bg-crimson-bright"></span>{{ $t(116) }}
                   </span>
 <span class="font-mono font-semibold text-white text-sm mt-1">{{ $t(117) }}</span>
 <span class="font-mono text-xs text-tactical-zinc mt-0.5">{{ $t(118) }}</span>
 </div>
-<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col">
+<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col rotate-2">
 <span class="font-arcade text-[10px] text-crimson-bright flex items-center gap-2">
 <span class="w-1.5 h-1.5 bg-crimson-bright"></span>{{ $t(119) }}
                   </span>
 <span class="font-mono font-semibold text-white text-sm mt-1">{{ $t(120) }}</span>
 <span class="font-mono text-xs text-tactical-zinc mt-0.5">{{ $t(121) }}</span>
 </div>
-<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col">
+<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col -rotate-2">
 <span class="font-arcade text-[10px] text-crimson-bright flex items-center gap-2">
 <span class="w-1.5 h-1.5 bg-crimson-bright"></span>{{ $t(122) }}
                   </span>
@@ -137,7 +137,7 @@ useStitchScript(code)
 <rect fill="#d4a64a" height="6" width="6" x="370" y="47"></rect>
 <!-- Step 3: Postgres Immutable ACID Store -->
 <rect fill="#111115" height="66" stroke="#52525b" stroke-width="2" width="120" x="380" y="17"></rect>
-<rect fill="#34d399" height="4" width="4" x="385" y="22"></rect>
+<rect fill="#4ade80" height="4" width="4" x="385" y="22"></rect>
 <text fill="#ffffff" font-family="'Press Start 2P', monospace" font-size="7" text-anchor="middle" x="440" y="44">{{ $t(26) }}</text>
 <text fill="#a1a1aa" font-family="'VT323', monospace" font-size="13" text-anchor="middle" x="440" y="60">{{ $t(132) }}</text>
 <text fill="#d4a64a" font-family="'VT323', monospace" font-size="11" text-anchor="middle" x="440" y="74">{{ $t(133) }}</text>
@@ -199,7 +199,7 @@ useStitchScript(code)
 </div>
 </article>
 <!-- MISSION 02: STAGE 02 - ZERO-TRUST EDGE BARRICADE -->
-<article class="project-card flex flex-col bg-arcade-dark border-2 border-arcade-border hover:border-crimson-pulse transition-colors duration-200" data-category="frontend">
+<article class="project-card flex flex-col bg-arcade-dark border-2 border-arcade-border hover:border-crimson-pulse hover:rotate-0 transition-all duration-300 rotate-1" data-category="frontend">
 <!-- Header -->
 <div class="flex flex-wrap items-center justify-between gap-2 p-3 bg-arcade-panel border-b-2 border-arcade-border">
 <div class="flex items-center gap-3">
@@ -224,7 +224,7 @@ useStitchScript(code)
                 </p>
 </div>
 <!-- 8-Bit Pixel Stack Badges -->
-<div class="flex flex-wrap gap-2 pt-1 font-arcade text-[10px]">
+<div class="flex flex-wrap gap-2 pt-1 font-arcade text-[10px] -rotate-1">
 <span class="px-2 py-1 bg-crimson-dark border-2 border-crimson-pulse text-crimson-bright font-semibold">{{ $t(154) }}</span>
 <span class="px-2 py-1 bg-arcade-black border-2 border-arcade-border text-white">{{ $t(155) }}</span>
 <span class="px-2 py-1 bg-arcade-black border-2 border-arcade-border text-white">{{ $t(156) }}</span>
@@ -233,21 +233,21 @@ useStitchScript(code)
 </div>
 <!-- Boss Defenses Grid -->
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col">
+<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col rotate-1">
 <span class="font-arcade text-[10px] text-crimson-bright flex items-center gap-1">
 <span class="w-1.5 h-1.5 bg-crimson-bright"></span>{{ $t(158) }}
                   </span>
 <span class="font-mono font-semibold text-white text-xs mt-1">{{ $t(159) }}</span>
 <span class="font-mono text-[11px] text-tactical-zinc mt-0.5">{{ $t(160) }}</span>
 </div>
-<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col">
+<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col -rotate-1">
 <span class="font-arcade text-[10px] text-crimson-bright flex items-center gap-1">
 <span class="w-1.5 h-1.5 bg-crimson-bright"></span>{{ $t(161) }}
                   </span>
 <span class="font-mono font-semibold text-white text-xs mt-1">{{ $t(162) }}</span>
 <span class="font-mono text-[11px] text-tactical-zinc mt-0.5">{{ $t(163) }}</span>
 </div>
-<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col">
+<div class="bg-arcade-card p-3 border-2 border-arcade-border flex flex-col rotate-2">
 <span class="font-arcade text-[10px] text-crimson-bright flex items-center gap-1">
 <span class="w-1.5 h-1.5 bg-crimson-bright"></span>{{ $t(164) }}
                   </span>
@@ -311,7 +311,7 @@ useStitchScript(code)
 <div class="flex items-center gap-2">
 <a class="px-3 py-2 bg-arcade-panel border border-arcade-border hover:border-crimson-bright text-secondary hover:text-white font-arcade text-[10px] uppercase tracking-wider transition-colors inline-flex items-center gap-1" href="https://github.com/ADolmos194/repositorio-dev-adolmos" rel="noopener noreferrer" target="_blank">
 <span>{{ $t(178) }}</span>
-<span class="material-symbols-outlined text-[13px] text-[#34d399]">open_in_new</span>
+<span class="material-symbols-outlined text-[13px] text-[#4ade80]">open_in_new</span>
 </a>
 <a class="px-3 py-2 bg-crimson-pulse text-black font-arcade text-[10px] uppercase tracking-wider hover:bg-white hover:text-arcade-black transition-colors border-2 border-white flex items-center gap-2" href="https://aylton-martinez.vercel.app/" rel="noopener noreferrer" target="_blank">
 <span>{{ $t(179) }}</span>

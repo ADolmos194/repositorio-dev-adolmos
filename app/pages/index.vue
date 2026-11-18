@@ -7,11 +7,11 @@
 <!-- Retro Arcade Hero Section -->
 <PageHero :eyebrow="$t(0)" :title="$t(1)" :accent="$t(2)" :lead="$t(3)"><div class="flex flex-wrap items-center gap-4 pt-2">
 <a class="pixel-btn-red inline-flex items-center gap-3 px-5 py-3 bg-[#d4a64a] hover:bg-white text-black font-pixel text-[10px] sm:text-[11px] uppercase tracking-wider transition-colors duration-150" href="https://wa.me/51951122014" target="_blank">
-<span class="material-symbols-outlined text-[18px] text-[#d4a64a]">chat</span>
+<span class="material-symbols-outlined icon-filled text-[18px] text-black">chat</span>
 <span>{{ $t(4) }}</span>
 </a>
 <a class="pixel-btn-dark inline-flex items-center gap-3 px-5 py-3 bg-[#0c0c0c] hover:bg-[#d4a64a] text-[#f0d9a0] hover:text-black border-2 border-[#d4a64a] font-pixel text-[10px] sm:text-[11px] uppercase tracking-wider transition-colors duration-150 shadow-[4px_4px_0_0_#d4a64a]" href="#proyectos">
-<span class="material-symbols-outlined text-[18px] text-[#34d399]">videogame_asset</span>
+<span class="material-symbols-outlined text-[18px] text-[#4ade80]">videogame_asset</span>
 <span>{{ $t(5) }}</span>
 </a>
 
@@ -21,7 +21,7 @@
 <section class="w-full py-8 px-4 sm:px-6 border-y-2 border-[#181818] bg-[#050505]">
 <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 <!-- Stat 1 -->
-<div class="bg-[#090909] p-5 flex flex-col justify-between gap-3 border-2 border-[#27272a] hover:border-[#d4a64a] transition-colors shadow-[4px_4px_0_0_#0e0e0e] relative">
+<div class="bg-[#090909] p-5 flex flex-col justify-between gap-3 border-2 border-[#27272a] hover:border-[#d4a64a] transition-all duration-300 shadow-[4px_4px_0_0_#0e0e0e] relative -rotate-1 hover:rotate-0">
 <div class="flex items-center justify-between">
 <span class="font-pixel text-[10px] text-[#d4a64a] uppercase">{{ $t(7) }}</span>
 
@@ -33,7 +33,7 @@
 
 </div>
 <!-- Stat 2 -->
-<div class="bg-[#090909] p-5 flex flex-col justify-between gap-3 border-2 border-[#27272a] hover:border-[#d4a64a] transition-colors shadow-[4px_4px_0_0_#0e0e0e] relative">
+<div class="bg-[#090909] p-5 flex flex-col justify-between gap-3 border-2 border-[#27272a] hover:border-[#d4a64a] transition-all duration-300 shadow-[4px_4px_0_0_#0e0e0e] relative rotate-1 hover:rotate-0">
 <div class="flex items-center justify-between">
 <span class="font-pixel text-[10px] text-[#d4a64a] uppercase">{{ $t(10) }}</span>
 
@@ -45,7 +45,7 @@
 
 </div>
 <!-- Stat 3 -->
-<div class="bg-[#090909] p-5 flex flex-col justify-between gap-3 border-2 border-[#27272a] hover:border-[#d4a64a] transition-colors shadow-[4px_4px_0_0_#0e0e0e] relative">
+<div class="bg-[#090909] p-5 flex flex-col justify-between gap-3 border-2 border-[#27272a] hover:border-[#d4a64a] transition-all duration-300 shadow-[4px_4px_0_0_#0e0e0e] relative -rotate-2 hover:rotate-0">
 <div class="flex items-center justify-between">
 <span class="font-pixel text-[10px] text-[#d4a64a] uppercase">{{ $t(13) }}</span>
 
@@ -57,7 +57,7 @@
 
 </div>
 <!-- Stat 4 -->
-<div class="bg-[#090909] p-5 flex flex-col justify-between gap-3 border-2 border-[#27272a] hover:border-[#d4a64a] transition-colors shadow-[4px_4px_0_0_#0e0e0e] relative">
+<div class="bg-[#090909] p-5 flex flex-col justify-between gap-3 border-2 border-[#27272a] hover:border-[#d4a64a] transition-all duration-300 shadow-[4px_4px_0_0_#0e0e0e] relative rotate-2 hover:rotate-0">
 <div class="flex items-center justify-between">
 <span class="font-pixel text-[10px] text-[#d4a64a] uppercase">{{ $t(16) }}</span>
 
@@ -83,7 +83,7 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <!-- Cartridge 1 -->
-<div class="bg-[#080808] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-colors group shadow-[5px_5px_0_0_#0d0d0d] relative">
+<div class="bg-[#080808] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-all duration-300 group shadow-[5px_5px_0_0_#0d0d0d] relative -rotate-1 hover:rotate-0 hover:scale-[1.02]">
 <div class="flex flex-col gap-3">
 <div class="flex items-center justify-between font-pixel text-[10px] text-[#d4a64a]">
 <div class="flex items-center gap-2">
@@ -95,7 +95,7 @@
 <h3 class="font-pixel text-[14px] text-white uppercase group-hover:text-[#d4a64a] transition-colors leading-relaxed">{{ $t(23) }}</h3>
 <p class="font-mono text-[13px] text-[#9ca3af] leading-relaxed">{{ $t(24) }}</p>
 </div>
-<div class="flex flex-wrap items-center gap-2 pt-3 border-t-2 border-[#111111]">
+<div class="flex flex-wrap items-center gap-2 pt-3 border-t-2 border-[#111111] rotate-1">
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(25) }}</span>
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(26) }}</span>
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(27) }}</span>
@@ -104,11 +104,11 @@
 </div>
 </div>
 <!-- Cartridge 2 -->
-<div class="bg-[#080808] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-colors group shadow-[5px_5px_0_0_#0d0d0d] relative">
+<div class="bg-[#080808] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-all duration-300 group shadow-[5px_5px_0_0_#0d0d0d] relative rotate-1 hover:rotate-0 hover:scale-[1.02]">
 <div class="flex flex-col gap-3">
 <div class="flex items-center justify-between font-pixel text-[10px] text-[#d4a64a]">
 <div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[16px] text-[#f4f4f5]">phone_android</span>
+<span class="material-symbols-outlined text-[16px] text-[#f4f4f5]">phone_iphone</span>
 <span>{{ $t(29) }}</span>
 </div>
 
@@ -116,7 +116,7 @@
 <h3 class="font-pixel text-[14px] text-white uppercase group-hover:text-[#d4a64a] transition-colors leading-relaxed">{{ $t(30) }}</h3>
 <p class="font-mono text-[13px] text-[#9ca3af] leading-relaxed">{{ $t(31) }}</p>
 </div>
-<div class="flex flex-wrap items-center gap-2 pt-3 border-t-2 border-[#111111]">
+<div class="flex flex-wrap items-center gap-2 pt-3 border-t-2 border-[#111111] -rotate-1">
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(32) }}</span>
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(33) }}</span>
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(34) }}</span>
@@ -125,7 +125,7 @@
 </div>
 </div>
 <!-- Cartridge 3 -->
-<div class="bg-[#080808] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-colors group shadow-[5px_5px_0_0_#0d0d0d] relative">
+<div class="bg-[#080808] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-all duration-300 group shadow-[5px_5px_0_0_#0d0d0d] relative -rotate-2 hover:rotate-0 hover:scale-[1.02]">
 <div class="flex flex-col gap-3">
 <div class="flex items-center justify-between font-pixel text-[10px] text-[#d4a64a]">
 <div class="flex items-center gap-2">
@@ -137,7 +137,7 @@
 <h3 class="font-pixel text-[14px] text-white uppercase group-hover:text-[#d4a64a] transition-colors leading-relaxed">{{ $t(37) }}</h3>
 <p class="font-mono text-[13px] text-[#9ca3af] leading-relaxed">{{ $t(38) }}</p>
 </div>
-<div class="flex flex-wrap items-center gap-2 pt-3 border-t-2 border-[#111111]">
+<div class="flex flex-wrap items-center gap-2 pt-3 border-t-2 border-[#111111] rotate-2">
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(39) }}</span>
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(40) }}</span>
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(41) }}</span>
@@ -146,11 +146,11 @@
 </div>
 </div>
 <!-- Cartridge 4 -->
-<div class="bg-[#080808] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-colors group shadow-[5px_5px_0_0_#0d0d0d] relative">
+<div class="bg-[#080808] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-all duration-300 group shadow-[5px_5px_0_0_#0d0d0d] relative rotate-2 hover:rotate-0 hover:scale-[1.02]">
 <div class="flex flex-col gap-3">
 <div class="flex items-center justify-between font-pixel text-[10px] text-[#d4a64a]">
 <div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[16px] text-[#34d399]">sync_alt</span>
+<span class="material-symbols-outlined text-[16px] text-[#4ade80]">sync_alt</span>
 <span>{{ $t(43) }}</span>
 </div>
 
@@ -158,7 +158,7 @@
 <h3 class="font-pixel text-[14px] text-white uppercase group-hover:text-[#d4a64a] transition-colors leading-relaxed">{{ $t(44) }}</h3>
 <p class="font-mono text-[13px] text-[#9ca3af] leading-relaxed">{{ $t(45) }}</p>
 </div>
-<div class="flex flex-wrap items-center gap-2 pt-3 border-t-2 border-[#111111]">
+<div class="flex flex-wrap items-center gap-2 pt-3 border-t-2 border-[#111111] -rotate-2">
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(46) }}</span>
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(47) }}</span>
 <span class="px-2 py-1 bg-[#0b0b0b] border border-[#27272a] text-white font-pixel text-[10px]">{{ $t(48) }}</span>
@@ -182,7 +182,7 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <!-- Quest 1 -->
-<article class="bg-[#090909] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-colors group shadow-[5px_5px_0_0_#0d0d0d] relative">
+<article class="bg-[#090909] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-all duration-300 group shadow-[5px_5px_0_0_#0d0d0d] relative -rotate-1 hover:rotate-0">
 <div class="flex flex-col gap-4">
 <div class="flex items-center justify-between font-pixel text-[10px]">
 <div class="flex items-center gap-2">
@@ -220,11 +220,11 @@
 <span>{{ $t(63) }}</span>
 <span class="material-symbols-outlined text-[12px] text-[#a1a1aa]">arrow_outward</span>
 </a>
-<span class="text-[#27272a] font-mono text-[11px]">{{ $t(64) }}</span>
+<span class="text-zinc-500 font-mono text-[11px]">{{ $t(64) }}</span>
 </div>
 </article>
 <!-- Quest 2 -->
-<article class="bg-[#090909] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-colors group shadow-[5px_5px_0_0_#0d0d0d] relative">
+<article class="bg-[#090909] p-6 flex flex-col justify-between gap-6 border-2 border-[#27272a] hover:border-[#d4a64a] transition-all duration-300 group shadow-[5px_5px_0_0_#0d0d0d] relative rotate-1 hover:rotate-0">
 <div class="flex flex-col gap-4">
 <div class="flex items-center justify-between font-pixel text-[10px]">
 <div class="flex items-center gap-2">
@@ -283,7 +283,7 @@
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 <!-- Rule 1 -->
-<div class="bg-[#070707] p-5 flex flex-col gap-3 border-2 border-[#181818] hover:border-[#d4a64a] transition-colors shadow-[4px_4px_0_0_#0c0c0c]">
+<div class="bg-[#070707] p-5 flex flex-col gap-3 border-2 border-[#181818] hover:border-[#d4a64a] transition-all duration-300 shadow-[4px_4px_0_0_#0c0c0c] rotate-1 hover:rotate-0">
 <div class="flex items-center justify-between">
 <span class="font-pixel text-[10px] text-[#d4a64a]">01 //</span>
 <span class="font-pixel text-[7px] text-[#a1a1aa] uppercase">{{ $t(79) }}</span>
@@ -294,7 +294,7 @@
           </p>
 </div>
 <!-- Rule 2 -->
-<div class="bg-[#070707] p-5 flex flex-col gap-3 border-2 border-[#181818] hover:border-[#d4a64a] transition-colors shadow-[4px_4px_0_0_#0c0c0c]">
+<div class="bg-[#070707] p-5 flex flex-col gap-3 border-2 border-[#181818] hover:border-[#d4a64a] transition-all duration-300 shadow-[4px_4px_0_0_#0c0c0c] -rotate-1 hover:rotate-0">
 <div class="flex items-center justify-between">
 <span class="font-pixel text-[10px] text-[#d4a64a]">02 //</span>
 <span class="font-pixel text-[7px] text-[#a1a1aa] uppercase">{{ $t(82) }}</span>
@@ -305,7 +305,7 @@
           </p>
 </div>
 <!-- Rule 3 -->
-<div class="bg-[#070707] p-5 flex flex-col gap-3 border-2 border-[#181818] hover:border-[#d4a64a] transition-colors shadow-[4px_4px_0_0_#0c0c0c]">
+<div class="bg-[#070707] p-5 flex flex-col gap-3 border-2 border-[#181818] hover:border-[#d4a64a] transition-all duration-300 shadow-[4px_4px_0_0_#0c0c0c] rotate-2 hover:rotate-0">
 <div class="flex items-center justify-between">
 <span class="font-pixel text-[10px] text-[#d4a64a]">03 //</span>
 <span class="font-pixel text-[7px] text-[#a1a1aa] uppercase">{{ $t(85) }}</span>
@@ -316,7 +316,7 @@
           </p>
 </div>
 <!-- Rule 4 -->
-<div class="bg-[#070707] p-5 flex flex-col gap-3 border-2 border-[#181818] hover:border-[#d4a64a] transition-colors shadow-[4px_4px_0_0_#0c0c0c]">
+<div class="bg-[#070707] p-5 flex flex-col gap-3 border-2 border-[#181818] hover:border-[#d4a64a] transition-all duration-300 shadow-[4px_4px_0_0_#0c0c0c] -rotate-2 hover:rotate-0">
 <div class="flex items-center justify-between">
 <span class="font-pixel text-[10px] text-[#d4a64a]">04 //</span>
 <span class="font-pixel text-[7px] text-[#a1a1aa] uppercase">{{ $t(88) }}</span>
@@ -352,7 +352,7 @@
 <!-- Tactical Comms Pixel Buttons -->
 <div class="flex flex-wrap items-center gap-4 pt-2 relative z-10">
 <a class="pixel-btn-red inline-flex items-center gap-3 px-6 py-4 bg-[#d4a64a] hover:bg-white text-black font-pixel text-[10px] sm:text-[11px] uppercase tracking-wider transition-colors duration-150" href="https://wa.me/51951122014" rel="noopener noreferrer" target="_blank">
-<span class="material-symbols-outlined text-[18px] text-[#34d399]">chat</span>
+<span class="material-symbols-outlined text-[18px] text-[#4ade80]">chat</span>
 <span>{{ $t(93) }}</span>
 </a>
 <a class="pixel-btn-dark inline-flex items-center gap-3 px-5 py-4 bg-[#0b0b0b] border-2 border-[#d4a64a] text-[#f0d9a0] hover:bg-[#d4a64a] hover:text-black font-pixel text-[10px] uppercase tracking-wider transition-colors duration-150 shadow-[4px_4px_0_0_#d4a64a]" href="https://www.linkedin.com/in/aylton-mesias-martinez-14a6153ab" rel="noopener noreferrer" target="_blank">

@@ -12,6 +12,16 @@ const items = computed(() => NAV[locale.value].map((label, i) => [label, PATHS[i
 const text = computed(() => (locale.value === 'es'
   ? { cv: '[DESCARGAR CV]', badge: 'DISPONIBLE · FREELANCE & FULL-TIME', theme: theme.value === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro', lang: 'Idioma' }
   : { cv: '[DOWNLOAD CV]', badge: 'AVAILABLE · FREELANCE & FULL-TIME', theme: theme.value === 'dark' ? 'Switch to light mode' : 'Switch to dark mode', lang: 'Language' }))
+
+// Small screens: the active link can start past the edge of the scrollable nav row, so bring it into view.
+const mobileNavEl = ref<HTMLElement | null>(null)
+function scrollActiveIntoView() {
+  nextTick(() => {
+    mobileNavEl.value?.querySelector('[aria-current="page"]')?.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' })
+  })
+}
+onMounted(scrollActiveIntoView)
+watch(() => route.path, scrollActiveIntoView)
 </script>
 
 <template>
@@ -24,7 +34,7 @@ const text = computed(() => (locale.value === 'es'
           <span class="hidden sm:inline font-pixel text-[13px] tracking-wider text-white hover:text-[#d4a64a] transition-colors">AYLTON.MARTINEZ</span>
         </NuxtLink>
         <div class="hidden 2xl:flex items-center gap-2 px-3 py-1 bg-[#0e0e12] border-2 border-[#27272a] text-[#a1a1aa] font-mono text-[11px] uppercase tracking-wider">
-          <span class="w-1.5 h-1.5 bg-[#34d399]" />
+          <span class="w-1.5 h-1.5 bg-[#4ade80]" />
           <span>{{ text.badge }}</span>
         </div>
       </div>
@@ -47,7 +57,7 @@ const text = computed(() => (locale.value === 'es'
             :key="l"
             type="button"
             class="px-2 py-2 uppercase transition-colors"
-            :class="locale === l ? 'bg-[#34d399] text-black' : 'text-[#a1a1aa] hover:text-white'"
+            :class="locale === l ? 'bg-[#4ade80] text-black' : 'text-[#a1a1aa] hover:text-white'"
             :aria-pressed="locale === l"
             @click="set(l)"
           >{{ l }}</button>
@@ -66,7 +76,7 @@ const text = computed(() => (locale.value === 'es'
           href="/AyltonMesiasMartinez_CV.pdf"
           download
         >
-          <span class="material-symbols-outlined text-[14px]">save</span>
+          <span class="material-symbols-outlined text-[14px]">download</span>
           <span class="hidden sm:inline">{{ text.cv }}</span>
           <span class="sm:hidden">CV</span>
         </a>
@@ -74,11 +84,12 @@ const text = computed(() => (locale.value === 'es'
     </div>
 
     <!-- small screens: the same links in a scrollable row -->
-    <nav class="md:hidden flex gap-1 overflow-x-auto px-6 pb-2 font-pixel text-[10px] uppercase" aria-label="Secciones">
+    <nav ref="mobileNavEl" class="md:hidden flex gap-1 overflow-x-auto px-6 pb-2 font-pixel text-[10px] uppercase" aria-label="Secciones">
       <NuxtLink
         v-for="[label, to] in items"
         :key="to"
         :to="to"
+        :aria-current="route.path === to ? 'page' : undefined"
         class="px-2 py-2 border-2 shrink-0 transition-colors"
         :class="route.path === to ? 'text-black bg-[#d4a64a] border-white' : 'text-[#a1a1aa] border-transparent'"
       >{{ label }}</NuxtLink>

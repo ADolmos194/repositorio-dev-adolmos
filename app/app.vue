@@ -11,6 +11,6 @@ onMounted(() => { initTheme(); initLocale() })
 </script>
 
 <template>
-  <SiteBoxGrid3D />
+  <SiteCircuitGrid3D />
   <NuxtPage />
 </template>

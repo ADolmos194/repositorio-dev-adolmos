@@ -41,7 +41,7 @@ useStitchScript(code)
 <div class="space-y-2">
 <div class="flex items-center justify-between font-mono text-[11px] text-text-muted group-hover:text-neon-cyan">
 <span>{{ $t(276) }}</span>
-<span class="material-symbols-outlined text-[18px] text- group-hover: text-[#34d399]">phone_iphone</span>
+<span class="material-symbols-outlined text-[18px] text- group-hover: text-[#4ade80]">phone_iphone</span>
 </div>
 <h3 class="font-display font-semibold text-[17px] text-text-bright">{{ $t(277) }}</h3>
 <p class="font-body text-[13px] text-text-muted leading-relaxed">
@@ -173,7 +173,7 @@ useStitchScript(code)
 <!-- Submission Area with Neon Red Action Button -->
 <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
 <div class="flex items-center gap-2 text-text-muted font-mono text-[11px]">
-<span class="material-symbols-outlined text-[16px] text-[#34d399]">schedule</span>
+<span class="material-symbols-outlined text-[16px] text-[#4ade80]">schedule</span>
 <span>{{ $t(307) }}</span>
 </div>
 <button class="w-full sm:w-auto px-8 py-3 bg-neon-red hover:bg-neon-red-hover text-white font-mono text-[13px] font-semibold uppercase tracking-widest rounded-sm transition-colors duration-200 flex items-center justify-center gap-2 neon-glow-red cursor-pointer" id="transmitButton" type="submit">
@@ -212,7 +212,7 @@ useStitchScript(code)
 <span>{{ $t(312) }}</span>
 </a>
 <a class="py-3 bg-cyber-surface-high hover:bg-cyber-border text-text-bright font-mono text-[12px] uppercase tracking-wider rounded-sm flex items-center justify-center gap-2 transition-colors border border-cyber-border" href="tel:+51951122014">
-<span class="material-symbols-outlined text-[17px] text-[#34d399]">call</span>
+<span class="material-symbols-outlined text-[17px] text-[#4ade80]">call</span>
 <span>{{ $t(313) }}</span>
 </a>
 </div>
